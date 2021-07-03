@@ -15,24 +15,17 @@ local poweroff_text_icon = ""
 local reboot_text_icon = ""
 local suspend_text_icon = ""
 local exit_text_icon = ""
-local lock_text_icon = ""
 
 local button_bg = beautiful.xbackground
 local button_size = dpi(120)
-
-local lock_screen = require("ui.lockscreen")
-lock_screen.init()
 
 -- Commands
 local poweroff_command =
     function() awful.spawn.with_shell("systemctl poweroff") end
 local reboot_command = function() awful.spawn.with_shell("systemctl reboot") end
-local suspend_command = function()
-    lock_screen_show()
-    awful.spawn.with_shell("systemctl suspend")
-end
+local suspend_command =
+    function() awful.spawn.with_shell("systemctl suspend") end
 local exit_command = function() awesome.quit() end
-local lock_command = function() lock_screen_show() end
 
 -- Helper function that generates the clickable buttons
 local create_button = function(symbol, hover_color, text, command)
@@ -87,9 +80,6 @@ local suspend = create_button(suspend_text_icon, beautiful.xcolor3, "Suspend",
                               suspend_command)
 local exit = create_button(exit_text_icon, beautiful.xcolor4, "Exit",
                            exit_command)
-local lock = create_button(lock_text_icon, beautiful.xcolor5, "Lock",
-                           lock_command)
-
 local exit_manager = {}
 -- Create the exit screen wibox
 local exit_screen = wibox({
@@ -137,9 +127,6 @@ exit_manager.exit_screen_show = function()
                 -- 'e' for exit
             elseif key == 'e' then
                 exit_command()
-            elseif key == 'l' then
-                exit_manager.exit_screen_hide()
-                lock_command()
             elseif key == 'p' then
                 poweroff_command()
             elseif key == 'r' then
@@ -153,14 +140,10 @@ exit_manager.exit_screen_show = function()
 end
 
 exit_screen:buttons(gears.table.join( -- Left click - Hide exit_screen
-                        awful.button({}, 1, function()
-        exit_manager.exit_screen_hide()
-    end), -- Middle click - Hide exit_screen
-    awful.button({}, 2, function() exit_manager.exit_screen_hide() end),
-    -- Right click - Hide exit_screen
-                        awful.button({}, 3, function()
-        exit_manager.exit_screen_hide()
-    end)))
+awful.button({}, 1, function() exit_manager.exit_screen_hide() end), -- Middle click - Hide exit_screen
+awful.button({}, 2, function() exit_manager.exit_screen_hide() end),
+-- Right click - Hide exit_screen
+awful.button({}, 3, function() exit_manager.exit_screen_hide() end)))
 
 -- Item placement
 exit_screen:setup{
@@ -172,7 +155,6 @@ exit_screen:setup{
             reboot,
             suspend,
             exit,
-            lock,
             spacing = dpi(50),
             layout = wibox.layout.fixed.horizontal
         },

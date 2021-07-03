@@ -102,13 +102,13 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
                                   taglist_square_size, theme.fg_normal)
 theme.taglist_font = theme.font_taglist
 theme.taglist_bg = theme.wibar_bg
-theme.taglist_bg_focus = transparent
+theme.taglist_bg_focus = theme.xcolor0
 theme.taglist_fg_focus = theme.xcolor6
-theme.taglist_bg_urgent = transperent
-theme.taglist_fg_urgent = theme.xcolor6
-theme.taglist_bg_occupied = transparent
+theme.taglist_bg_urgent = theme.xcolor0
+theme.taglist_fg_urgent = theme.xcolor9
+theme.taglist_bg_occupied = theme.xcolor0
 theme.taglist_fg_occupied = theme.xcolor3
-theme.taglist_bg_empty = transparent
+theme.taglist_bg_empty = theme.xcolor0
 theme.taglist_fg_empty = theme.xcolor8
 theme.taglist_bg_volatile = transparent
 theme.taglist_fg_volatile = theme.xcolor11
@@ -269,9 +269,7 @@ theme.weather_city = "Raleigh"
 
 -- Swallowing
 --
-theme.dont_swallow_classname_list = {
-    "firefox", "gimp", "Thunar"
-}
+theme.dont_swallow_classname_list = {"firefox", "gimp", "Thunar"}
 
 -- Layout Machi
 --

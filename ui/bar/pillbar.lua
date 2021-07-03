@@ -8,17 +8,10 @@ local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local helpers = require("helpers")
+local vicious = require("vicious")
 
 local systray_margin = (beautiful.wibar_height - beautiful.systray_icon_size) /
                            2
-
--- Awesome Panel -----------------------------------------------------------
-
-local icon1 = wibox.widget {
-    widget = wibox.widget.imagebox,
-    image = beautiful.distro_logo,
-    resize = true
-}
 
 -- Battery Bar Widget ---------------------------------------------------------
 
@@ -81,6 +74,73 @@ awesome.connect_signal("signal::battery", function(percentage, state)
                               string.format("%1d", value) .. "%" .. "</span>"
 end)
 
+-- Memory Widget -------------------------------------------------------------
+local mem_text = wibox.widget.textbox()
+vicious.cache(vicious.widgets.mem)
+vicious.register(mem_text, vicious.widgets.mem, " $2MiB", 3)
+
+mem_text.markup = "<span foreground='" .. beautiful.xcolor10 .. "'>" ..
+                      mem_text.text .. "</span>"
+
+mem_text:connect_signal("widget::redraw_needed", function()
+    mem_text.markup = "<span foreground='" .. beautiful.xcolor10 .. "'>" ..
+                          mem_text.text .. "</span>"
+end)
+
+local mem_icon = wibox.widget {
+    font = beautiful.icon_font_name .. "16",
+    markup = "<span foreground='" .. beautiful.xcolor10 .. "'></span>",
+    align = "center",
+    valign = "center",
+    widget = wibox.widget.textbox
+}
+
+local mem_pill = wibox.widget {
+    {
+        {mem_icon, top = dpi(1), widget = wibox.container.margin},
+        helpers.horizontal_pad(3),
+        {mem_text, top = dpi(1), widget = wibox.container.margin},
+        layout = wibox.layout.fixed.horizontal
+    },
+    left = dpi(10),
+    right = dpi(10),
+    bottom = dpi(2),
+    widget = wibox.container.margin
+}
+
+-- FS Widget ------------------------------------------------------------------
+local fs_text = wibox.widget.textbox()
+vicious.register(fs_text, vicious.widgets.fs, " ${/data avail_gb}GiB", 13)
+
+fs_text.markup = "<span foreground='" .. beautiful.xcolor12 .. "'>" ..
+                     fs_text.text .. "</span>"
+
+fs_text:connect_signal("widget::redraw_needed", function()
+    fs_text.markup = "<span foreground='" .. beautiful.xcolor12 .. "'>" ..
+                         fs_text.text .. "</span>"
+end)
+
+local fs_icon = wibox.widget {
+    font = beautiful.icon_font_name .. "18",
+    markup = "<span foreground='" .. beautiful.xcolor12 .. "'></span>",
+    align = "center",
+    valign = "center",
+    widget = wibox.widget.textbox
+}
+
+local fs_pill = wibox.widget {
+    {
+        {fs_icon, top = dpi(2), widget = wibox.container.margin},
+        helpers.horizontal_pad(3),
+        {fs_text, top = dpi(1), widget = wibox.container.margin},
+        layout = wibox.layout.fixed.horizontal
+    },
+    left = dpi(10),
+    right = dpi(10),
+    bottom = dpi(2),
+    widget = wibox.container.margin
+}
+
 -- Date Widget ----------------------------------------------------------------
 
 local date_text = wibox.widget {
@@ -100,7 +160,7 @@ date_text:connect_signal("widget::redraw_needed", function()
 end)
 
 local date_icon = wibox.widget {
-    font = beautiful.icon_font_name .. "12",
+    font = beautiful.icon_font_name .. "16",
     markup = "<span foreground='" .. beautiful.xcolor11 .. "'></span>",
     align = "center",
     valign = "center",
@@ -140,7 +200,7 @@ time_text:connect_signal("widget::redraw_needed", function()
 end)
 
 local time_icon = wibox.widget {
-    font = beautiful.icon_font_name .. "16",
+    font = beautiful.icon_font_name .. "17",
     markup = "<span foreground='" .. beautiful.xcolor5 .. "'></span>",
     align = "center",
     valign = "center",
@@ -375,8 +435,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                     {id = 'text_role', widget = wibox.widget.textbox},
                     layout = wibox.layout.fixed.horizontal
                 },
-                top = dpi(5),
-                bottom = dpi(5),
+                top = dpi(2),
+                bottom = dpi(2),
                 left = dpi(10),
                 right = dpi(10),
                 widget = wibox.container.margin
@@ -415,21 +475,22 @@ screen.connect_signal("request::desktop_decoration", function(s)
                         layout = wibox.layout.fixed.horizontal
                     })),
                     s.mypromptbox,
+                    wrap_widget(make_pill(mem_pill, beautiful.xcolor0)),
+                    wrap_widget(make_pill(fs_pill, beautiful.xcolor0)),
                     wrap_widget(make_pill(playerctl_bar, beautiful.xcolor8))
                 },
                 {wrap_widget(s.mytasklist), widget = wibox.container.constraint},
                 {
                     wrap_widget(make_pill(time_pill, beautiful.xcolor0 .. 55)),
                     wrap_widget(make_pill(date_pill, beautiful.xcolor0)),
-                    wrap_widget(make_pill(
-                                    {
-                            s.mylayoutbox,
-                            top = dpi(3),
-                            bottom = dpi(3),
-                            right = dpi(3),
-                            left = dpi(3),
-                            widget = wibox.container.margin
-                        }, beautiful.xcolor8 .. 90)),
+                    wrap_widget(make_pill({
+                        s.mylayoutbox,
+                        top = dpi(3),
+                        bottom = dpi(3),
+                        right = dpi(4),
+                        left = dpi(4),
+                        widget = wibox.container.margin
+                    }, beautiful.xcolor0 .. 00)),
                     wrap_widget(awful.widget.only_on_screen(final_systray,
                                                             screen[1])),
                     helpers.horizontal_pad(4),

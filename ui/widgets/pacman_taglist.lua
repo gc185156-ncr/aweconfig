@@ -59,7 +59,7 @@ local get_taglist = function(s)
                         self.bg = self.backup
                     end
                 end)
-            end,
+            end
         },
         buttons = taglist_buttons
     }
