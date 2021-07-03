@@ -9,6 +9,3 @@ local awestore = require("awestore")
 
 awesome.connect_signal("widgets::exit_screen::toggle",
                        function() exit_manager.exit_screen_show() end)
-
-local peek = require(... .. ".peek")
-awesome.connect_signal("widgets::peek", function() peek.run() end)

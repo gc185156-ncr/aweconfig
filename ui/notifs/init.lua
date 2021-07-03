@@ -7,10 +7,7 @@ local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
 local ruled = require("ruled")
 
-require("ui.notifs.brightness")
 require("ui.notifs.playerctl")
--- require("ui.notifs.volume")
--- require("ui.notifs.battery")
 
 naughty.config.defaults.ontop = true
 naughty.config.defaults.screen = awful.screen.focused()

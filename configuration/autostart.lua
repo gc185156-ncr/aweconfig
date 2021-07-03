@@ -31,6 +31,9 @@ autostart_apps = {
     "picom --config " ..
         gears.filesystem.get_configuration_dir() .. "configuration/picom.conf",
 
+
+    "/home/gcc/.config/nvim/lua-language-server/bin/Linux/lua-language-server -E ./main.lua",
+
     -- Media controller daemon
     -- "playerctld daemon"
 }

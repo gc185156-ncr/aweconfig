@@ -28,9 +28,7 @@ naughty.connect_signal("request::display_error", function(message, startup)
     }
 end)
 
--- Initialize Theme
-local theme = "ghosts"
-beautiful.init(gfs.get_configuration_dir() .. "theme/" .. theme .. "/theme.lua")
+beautiful.init(gfs.get_configuration_dir() .. "theme/" .. "/theme.lua")
 
 -- Import Configuration
 require("configuration")

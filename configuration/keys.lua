@@ -76,14 +76,6 @@ awful.keyboard.append_global_keybindings({
                                    "scripts/shoot sel")
     end, {description = "take a selection with pads", group = "awesome"}),
 
-    -- Brightness
-    awful.key({}, "XF86MonBrightnessUp",
-              function() awful.spawn("xbacklight -inc 5") end,
-              {description = "increase brightness", group = "awesome"}),
-    awful.key({}, "XF86MonBrightnessDown",
-              function() awful.spawn("xbacklight -dec 5") end,
-              {description = "decrease brightness", group = "awesome"}),
-
     -- Awesome stuff
     awful.key({modkey}, "F1", hotkeys_popup.show_help,
               {description = "show help", group = "awesome"}),
