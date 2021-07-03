@@ -24,6 +24,9 @@ autostart_apps = {
     -- Network Manager Applet
     "nm-applet",
 
+    -- Redshift
+    "redshift",
+
     -- Disable Bell
     "xset -b",
 
@@ -31,14 +34,14 @@ autostart_apps = {
     "picom --config " ..
         gears.filesystem.get_configuration_dir() .. "configuration/picom.conf",
 
-
+    -- Lua Language Server
     "/home/gcc/.config/nvim/lua-language-server/bin/Linux/lua-language-server -E ./main.lua",
 
     -- Media controller daemon
     -- "playerctld daemon"
 }
--- LuaFormatter on
 
+-- LuaFormatter on
 for app = 1, #autostart_apps do run_once(autostart_apps[app]) end
 
 -- EOF ------------------------------------------------------------------------

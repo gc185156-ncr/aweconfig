@@ -7,7 +7,6 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local art = wibox.widget {
-    image = gears.filesystem.get_configuration_dir() .. "images/no_music.png",
     resize = true,
     forced_height = dpi(100),
     -- forced_width = dpi(80),

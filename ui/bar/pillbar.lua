@@ -18,17 +18,17 @@ local mem_text = wibox.widget.textbox()
 vicious.cache(vicious.widgets.mem)
 vicious.register(mem_text, vicious.widgets.mem, " $2MiB", 3)
 
-mem_text.markup = "<span foreground='" .. beautiful.xcolor10 .. "'>" ..
+mem_text.markup = "<span foreground='" .. beautiful.xcolor3 .. "'>" ..
                       mem_text.text .. "</span>"
 
 mem_text:connect_signal("widget::redraw_needed", function()
-    mem_text.markup = "<span foreground='" .. beautiful.xcolor10 .. "'>" ..
+    mem_text.markup = "<span foreground='" .. beautiful.xcolor3 .. "'>" ..
                           mem_text.text .. "</span>"
 end)
 
 local mem_icon = wibox.widget {
     font = beautiful.icon_font_name .. "16",
-    markup = "<span foreground='" .. beautiful.xcolor10 .. "'></span>",
+    markup = "<span foreground='" .. beautiful.xcolor3 .. "'></span>",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox
@@ -422,14 +422,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 {
                     wrap_widget(make_pill(time_pill, beautiful.xcolor0 .. 55)),
                     wrap_widget(make_pill(date_pill, beautiful.xcolor0)),
-                    wrap_widget(make_pill({
+                    wrap_widget({
                         s.mylayoutbox,
                         top = dpi(3),
                         bottom = dpi(3),
                         right = dpi(4),
                         left = dpi(4),
                         widget = wibox.container.margin
-                    }, beautiful.xcolor0 .. 00)),
+                    }),
                     wrap_widget(awful.widget.only_on_screen(final_systray,
                                                             screen[1])),
                     helpers.horizontal_pad(4),
