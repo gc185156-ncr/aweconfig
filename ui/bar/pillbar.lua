@@ -302,7 +302,7 @@ end
 local make_pill = function(w, c)
     local pill = wibox.widget {
         w,
-        bg = beautiful.xcolor0,
+        bg = "#1d2021",
         shape = helpers.rrect(10),
         widget = wibox.container.background
     }
@@ -350,7 +350,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     client.connect_signal("request::unmanage", add_wibar)
 
     -- Create the taglist widget
-    s.mytaglist = require("ui.widgets.pacman_taglist")(s)
+    s.mytaglist = require("ui.widgets.taglist")(s)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
@@ -399,7 +399,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                     -- function to add padding
                     wrap_widget( --
                     -- function to add pill
-                    make_pill({
+                    {
                         {
                             s.mytaglist,
                             helpers.horizontal_pad(4),
@@ -412,7 +412,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                             widget = wibox.widget.separator
                         },
                         layout = wibox.layout.fixed.horizontal
-                    })),
+                    }),
                     s.mypromptbox,
                     wrap_widget(make_pill(mem_pill, beautiful.xcolor0)),
                     wrap_widget(make_pill(fs_pill, beautiful.xcolor0)),

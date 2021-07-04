@@ -27,11 +27,8 @@ autostart_apps = {
     -- Redshift
     "redshift",
 
-    -- Disable Bell
-    "xset -b",
-
     -- Compositor
-    "picom --config " ..
+    "picom --experimental-backends --config " ..
         gears.filesystem.get_configuration_dir() .. "configuration/picom.conf",
 
     -- Lua Language Server
