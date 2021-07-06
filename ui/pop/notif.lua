@@ -33,7 +33,7 @@ local widgetBG = wibox.widget {
     bg = beautiful.xbackground,
     border_color = beautiful.widget_border_color,
     border_width = dpi(beautiful.widget_border_width),
-    shape = helpers.prrect(dpi(25), true, false, false, false),
+    shape = helpers.prrect(dpi(3), true, false, false, false),
     widget = wibox.container.background
 }
 

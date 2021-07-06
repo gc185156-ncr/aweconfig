@@ -34,8 +34,10 @@ autostart_apps = {
     -- Lua Language Server
     "/home/gcc/.config/nvim/lua-language-server/bin/Linux/lua-language-server -E ./main.lua",
 
-    -- Media controller daemon
-    -- "playerctld daemon"
+    -- Media Player daemon
+    "mpd ~/.config/mpd/mpd.conf",
+    "mpc update"
+
 }
 
 -- LuaFormatter on

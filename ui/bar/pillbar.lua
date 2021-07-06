@@ -47,9 +47,9 @@ local mem_pill = wibox.widget {
     widget = wibox.container.margin
 }
 
--- FS Widget ------------------------------------------------------------------
+-- FS Data Widget ------------------------------------------------------------------
 local fs_text = wibox.widget.textbox()
-vicious.register(fs_text, vicious.widgets.fs, " ${/data avail_gb}GiB", 13)
+vicious.register(fs_text, vicious.widgets.fs, " data ${/data avail_gb}GiB", 5)
 
 fs_text.markup = "<span foreground='" .. beautiful.xcolor12 .. "'>" ..
                      fs_text.text .. "</span>"
@@ -80,6 +80,73 @@ local fs_pill = wibox.widget {
     widget = wibox.container.margin
 }
 
+-- FS Root Widget ------------------------------------------------------------------
+local fs_root_text = wibox.widget.textbox()
+vicious.register(fs_root_text, vicious.widgets.fs, " root ${/ avail_gb}GiB", 5)
+
+fs_root_text.markup = "<span foreground='" .. beautiful.xcolor12 .. "'>" ..
+                          fs_root_text.text .. "</span>"
+
+fs_root_text:connect_signal("widget::redraw_needed", function()
+    fs_root_text.markup = "<span foreground='" .. beautiful.xcolor12 .. "'>" ..
+                              fs_root_text.text .. "</span>"
+end)
+
+local fs_root_icon = wibox.widget {
+    font = beautiful.icon_font_name .. "18",
+    markup = "<span foreground='" .. beautiful.xcolor12 .. "'></span>",
+    align = "center",
+    valign = "center",
+    widget = wibox.widget.textbox
+}
+
+local fs_root_pill = wibox.widget {
+    {
+        {fs_root_icon, top = dpi(2), widget = wibox.container.margin},
+        helpers.horizontal_pad(3),
+        {fs_root_text, top = dpi(1), widget = wibox.container.margin},
+        layout = wibox.layout.fixed.horizontal
+    },
+    left = dpi(10),
+    right = dpi(10),
+    bottom = dpi(2),
+    widget = wibox.container.margin
+}
+
+-- Updates Widget -------------------------------------------------------------
+local updates_text = wibox.widget.textbox()
+vicious.cache(vicious.widgets.pkg)
+vicious.register(updates_text, vicious.widgets.pkg, " $1", 100, 'Arch')
+
+updates_text.markup = "<span foreground='" .. beautiful.xcolor11 .. "'>" ..
+                          updates_text.text .. "</span>"
+
+updates_text:connect_signal("widget::redraw_needed", function()
+    updates_text.markup = "<span foreground='" .. beautiful.xcolor11 .. "'>" ..
+                              updates_text.text .. "</span>"
+end)
+
+local updates_icon = wibox.widget {
+    font = beautiful.icon_font_name .. "16",
+    markup = "<span foreground='" .. beautiful.xcolor11 .. "'></span>",
+    align = "center",
+    valign = "center",
+    widget = wibox.widget.textbox
+}
+
+local updates_pill = wibox.widget {
+    {
+        {updates_icon, top = dpi(1), widget = wibox.container.margin},
+        helpers.horizontal_pad(3),
+        {updates_text, top = dpi(1), widget = wibox.container.margin},
+        layout = wibox.layout.fixed.horizontal
+    },
+    left = dpi(10),
+    right = dpi(10),
+    bottom = dpi(2),
+    widget = wibox.container.margin
+}
+
 -- Date Widget ----------------------------------------------------------------
 
 local date_text = wibox.widget {
@@ -90,17 +157,17 @@ local date_text = wibox.widget {
     widget = wibox.widget.textclock
 }
 
-date_text.markup = "<span foreground='" .. beautiful.xcolor11 .. "'>" ..
+date_text.markup = "<span foreground='" .. beautiful.xcolor5 .. "'>" ..
                        date_text.text .. "</span>"
 
 date_text:connect_signal("widget::redraw_needed", function()
-    date_text.markup = "<span foreground='" .. beautiful.xcolor11 .. "'>" ..
+    date_text.markup = "<span foreground='" .. beautiful.xcolor5 .. "'>" ..
                            date_text.text .. "</span>"
 end)
 
 local date_icon = wibox.widget {
     font = beautiful.icon_font_name .. "16",
-    markup = "<span foreground='" .. beautiful.xcolor11 .. "'></span>",
+    markup = "<span foreground='" .. beautiful.xcolor5 .. "'></span>",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox
@@ -206,7 +273,7 @@ local song_artist = wibox.widget {
 
 local song_logo = wibox.widget {
     markup = '<span foreground="' .. beautiful.xcolor6 .. '"> </span>',
-    font = beautiful.icon_font_name .. 12,
+    font = beautiful.icon_font_name .. 16,
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox
@@ -283,7 +350,7 @@ local final_systray = wibox.widget {
         layout = wibox.container.margin
     },
     bg = beautiful.xcolor0,
-    shape = helpers.rrect(10),
+    shape = helpers.rrect(beautiful.border_radius),
     widget = wibox.container.background
 }
 
@@ -302,8 +369,8 @@ end
 local make_pill = function(w, c)
     local pill = wibox.widget {
         w,
-        bg = "#1d2021",
-        shape = helpers.rrect(10),
+        bg = c,
+        shape = helpers.rrect(beautiful.border_radius),
         widget = wibox.container.background
     }
     return pill
@@ -358,7 +425,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
         bg = beautiful.wibar_bg,
-        style = {bg = beautiful.xcolor0, shape = helpers.rrect(10)},
+        style = {
+            bg = beautiful.xcolor0,
+            shape = helpers.rrect(beautiful.border_radius)
+        },
         layout = {spacing = dpi(8), layout = wibox.layout.fixed.horizontal},
         widget_template = {
             {
@@ -396,9 +466,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 {
                     layout = wibox.layout.fixed.horizontal,
                     helpers.horizontal_pad(4),
-                    -- function to add padding
                     wrap_widget( --
-                    -- function to add pill
                     {
                         {
                             s.mytaglist,
@@ -414,14 +482,18 @@ screen.connect_signal("request::desktop_decoration", function(s)
                         layout = wibox.layout.fixed.horizontal
                     }),
                     s.mypromptbox,
-                    wrap_widget(make_pill(mem_pill, beautiful.xcolor0)),
-                    wrap_widget(make_pill(fs_pill, beautiful.xcolor0)),
-                    wrap_widget(make_pill(playerctl_bar, beautiful.xcolor8))
+                    wrap_widget(make_pill(fs_root_pill, beautiful.xcolor0)),
+                    wrap_widget(make_pill(fs_pill, beautiful.xcolor0))
+                    -- wrap_widget(make_pill(playerctl_bar, beautiful.xcolor0))
                 },
                 {wrap_widget(s.mytasklist), widget = wibox.container.constraint},
                 {
-                    wrap_widget(make_pill(time_pill, beautiful.xcolor0 .. 55)),
+                    wrap_widget(make_pill(updates_pill, beautiful.xcolor0)),
+                    -- wrap_widget(make_pill(mem_pill, beautiful.xcolor0)),
+                    wrap_widget(make_pill(time_pill, beautiful.xcolor0)),
                     wrap_widget(make_pill(date_pill, beautiful.xcolor0)),
+                    wrap_widget(awful.widget.only_on_screen(final_systray,
+                                                            screen[1])),
                     wrap_widget({
                         s.mylayoutbox,
                         top = dpi(3),
@@ -430,8 +502,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
                         left = dpi(4),
                         widget = wibox.container.margin
                     }),
-                    wrap_widget(awful.widget.only_on_screen(final_systray,
-                                                            screen[1])),
                     helpers.horizontal_pad(4),
                     layout = wibox.layout.fixed.horizontal
                 }

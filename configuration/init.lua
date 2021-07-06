@@ -32,10 +32,7 @@ ctrl = "Control"
 local yy = 10 + beautiful.wibar_height
 
 -- Enable Playerctl Module from Bling
-bling.signal.playerctl.enable {
-    -- ignore = "firefox", 
-    update_on_activity = true
-}
+bling.signal.playerctl.enable {ignore = "firefox", update_on_activity = true}
 
 bling.widget.tag_preview.enable {
     show_client_content = true,

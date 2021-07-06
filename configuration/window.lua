@@ -111,12 +111,12 @@ local layout_popup = awful.popup {
         shape = helpers.rrect(beautiful.border_radius),
         border_color = beautiful.widget_border_color,
         border_width = beautiful.widget_border_width,
-        widget = wibox.container.background,
+        widget = wibox.container.background
     },
     placement = awful.placement.centered,
     ontop = true,
     visible = false,
-    bg = beautiful.bg_normal .. "00",
+    bg = beautiful.bg_normal .. "00"
 }
 
 -- Key Bindings for Widget ----------------------------------------------------

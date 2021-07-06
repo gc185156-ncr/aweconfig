@@ -43,7 +43,7 @@ local create_button = function(symbol, hover_color, text, command)
         {nil, icon, expand = "none", layout = wibox.layout.align.horizontal},
         forced_height = button_size,
         forced_width = button_size,
-        shape = helpers.rrect(10),
+        shape = helpers.rrect(3),
         bg = button_bg,
         border_width = beautiful.widget_border_width + 1,
         border_color = beautiful.xcolor8,
