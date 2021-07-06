@@ -1,4 +1,4 @@
-# aweconfig
+# Awesome Config
 Awesome config based on javacafe01
 
 
