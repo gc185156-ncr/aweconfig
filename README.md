@@ -2,12 +2,12 @@
 Awesome config based on javacafe01
 
 
-** Dependencies
+## Dependencies
 
 ### Packages Required
 
 ```
-    paru -S vicious alacritty picom-git luarocks
+    paru -S vicious alacritty picom-git luarocks nerd-fonts-terminus papirus-icon-theme:w
 ```
 
 ### Awestore is also needed
@@ -16,7 +16,7 @@ Awesome config based on javacafe01
     sudo luarocks --lua-version 5.3 install awestore
 ```
 
-### Other stuff usually install
+### Not required but...
 ```
-    paru -S redshfit neovim-nightly-bin
+    paru -S redshfit neovim-nightly-bin xbindkeys rofi pavucontrol mpd mpc ncmpcpp nautilus firefox
 ```
