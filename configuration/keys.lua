@@ -44,7 +44,6 @@ awful.keyboard.append_global_keybindings({
 
 -- Awesomewm
 awful.keyboard.append_global_keybindings({
-    -- Volume control
     awful.key({}, "XF86AudioRaiseVolume",
               function() awful.spawn("pamixer -i 3") end,
               {description = "increase volume", group = "awesome"}),
@@ -177,7 +176,7 @@ awful.keyboard.append_global_keybindings({
                   function() awful.tag.incncol(-1, nil, true) end, {
         description = "decrease the number of columns",
         group = "layout"
-    }), awful.key({modkey, "Control"}, "n", function()
+    }), awful.key({modkey, "Shift"}, "n", function()
         local c = awful.client.restore()
         -- Focus restored client
         if c then
@@ -307,9 +306,10 @@ client.connect_signal("request::default_mousebindings", function()
             c:activate{context = "mouse_click", action = "mouse_move"}
         end), awful.button({modkey}, 3, function(c)
             c:activate{context = "mouse_click", action = "mouse_resize"}
-        end), awful.button({}, 2, function(c)
-            c:activate{context = "mouse_click", action = "mouse_move"}
-        end)
+        end), awful.button({}, 6, function() awful.spawn("mpc volume -3") end,
+                           {description = "lower music volume"}),
+        awful.button({}, 7, function() awful.spawn("mpc volume +3") end,
+                     {description = "raise music volume"})
     })
 end)
 

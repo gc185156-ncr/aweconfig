@@ -12,18 +12,13 @@ local function check_if_alive(cmd)
     end)
 end
 
-local anim_x = awestore.tweened(-1010, {
-    duration = 200,
-    easing = awestore.easing.cubic_in_out
-
-}) -- Dropdown term
 local top_drawer = awestore.tweened(-700, {
-    duration = 200,
+    duration = 150,
     easing = awestore.easing.cubic_in_out
 })
 
 local bottom_drawer = awestore.tweened(2140),
-                      {duration = 200, easing = awestore.easing.cubic_in_out}
+                      {duration = 150, easing = awestore.easing.cubic_in_out}
 
 local music_control = bling.module.scratchpad:new{
     command = "alacritty --class=ncmpcpp --command ncmpcpp",
@@ -32,12 +27,7 @@ local music_control = bling.module.scratchpad:new{
     autoclose = true,
     titlebars_enabled = false,
     floating = true,
-    geometry = {
-        x = beautiful.useless_gap * 2,
-        y = 720,
-        height = 700,
-        width = 2520
-    },
+    geometry = {x = 20, y = 820, height = 600, width = 2520},
     reapply = true,
     dont_focus_before_close = false,
     awestore = {y = bottom_drawer}
@@ -51,12 +41,7 @@ local quake_term = bling.module.scratchpad:new{
     sticky = true,
     autoclose = true,
     floating = true,
-    geometry = {
-        x = beautiful.useless_gap * 2,
-        y = 50,
-        height = 700,
-        width = 2520
-    },
+    geometry = {x = 20, y = 50, height = 600, width = 2520},
     reapply = true,
     dont_focus_before_close = false,
     awestore = {y = top_drawer}

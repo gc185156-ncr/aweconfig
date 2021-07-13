@@ -2,16 +2,12 @@
 -- Wibar (top bar)
 local awful = require("awful")
 local gears = require("gears")
-local gfs = require("gears.filesystem")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local helpers = require("helpers")
 local vicious = require("vicious")
-
-local systray_margin = (beautiful.wibar_height - beautiful.systray_icon_size) /
-                           2
 
 -- Memory Widget -------------------------------------------------------------
 local mem_text = wibox.widget.textbox()
@@ -147,67 +143,28 @@ local updates_pill = wibox.widget {
     widget = wibox.container.margin
 }
 
--- Date Widget ----------------------------------------------------------------
-
-local date_text = wibox.widget {
-    font = beautiful.font,
-    format = "%m/%d/%y",
-    align = "center",
-    valign = "center",
-    widget = wibox.widget.textclock
-}
-
-date_text.markup = "<span foreground='" .. beautiful.xcolor5 .. "'>" ..
-                       date_text.text .. "</span>"
-
-date_text:connect_signal("widget::redraw_needed", function()
-    date_text.markup = "<span foreground='" .. beautiful.xcolor5 .. "'>" ..
-                           date_text.text .. "</span>"
-end)
-
-local date_icon = wibox.widget {
-    font = beautiful.icon_font_name .. "16",
-    markup = "<span foreground='" .. beautiful.xcolor5 .. "'></span>",
-    align = "center",
-    valign = "center",
-    widget = wibox.widget.textbox
-}
-
-local date_pill = wibox.widget {
-    {
-        {date_icon, top = dpi(1), widget = wibox.container.margin},
-        helpers.horizontal_pad(10),
-        {date_text, top = dpi(1), widget = wibox.container.margin},
-        layout = wibox.layout.fixed.horizontal
-    },
-    left = dpi(10),
-    right = dpi(10),
-    bottom = dpi(2),
-    widget = wibox.container.margin
-}
-
 -- Time Widget ----------------------------------------------------------------
 
 local time_text = wibox.widget {
     font = beautiful.font,
-    format = "%T",
+    format = "%b %d, %T",
     align = "center",
     valign = "center",
     refresh = 1,
     widget = wibox.widget.textclock
 }
 
-time_text.markup = "<span foreground='" .. beautiful.xcolor5 .. "'>" ..
+time_text.markup = "<span foreground='" .. beautiful.xcolor7 .. "'>" ..
                        time_text.text .. "</span>"
 
 time_text:connect_signal("widget::redraw_needed", function()
-    time_text.markup = "<span foreground='" .. beautiful.xcolor5 .. "'>" ..
+    time_text.markup = "<span foreground='" .. beautiful.xcolor7 .. "'>" ..
                            time_text.text .. "</span>"
 end)
 
 local time_icon = wibox.widget {
     font = beautiful.icon_font_name .. "17",
-    markup = "<span foreground='" .. beautiful.xcolor5 .. "'></span>",
+    markup = "<span foreground='" .. beautiful.xcolor12 .. "'></span>",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox
@@ -215,8 +172,8 @@ local time_icon = wibox.widget {
 
 local time_pill = wibox.widget {
     {
-        {time_icon, top = dpi(1), widget = wibox.container.margin},
-        helpers.horizontal_pad(10),
+        -- {time_icon, top = dpi(1), widget = wibox.container.margin},
+        -- helpers.horizontal_pad(10),
         {time_text, top = dpi(1), widget = wibox.container.margin},
         layout = wibox.layout.fixed.horizontal
     },
@@ -480,18 +437,16 @@ screen.connect_signal("request::desktop_decoration", function(s)
                             widget = wibox.widget.separator
                         },
                         layout = wibox.layout.fixed.horizontal
-                    }),
-                    s.mypromptbox,
-                    wrap_widget(make_pill(fs_root_pill, beautiful.xcolor0)),
-                    wrap_widget(make_pill(fs_pill, beautiful.xcolor0))
+                    })
+                    -- wrap_widget(make_pill(fs_root_pill, beautiful.xcolor0)),
+                    -- wrap_widget(make_pill(fs_pill, beautiful.xcolor0))
                     -- wrap_widget(make_pill(playerctl_bar, beautiful.xcolor0))
                 },
                 {wrap_widget(s.mytasklist), widget = wibox.container.constraint},
                 {
-                    wrap_widget(make_pill(updates_pill, beautiful.xcolor0)),
+                    -- wrap_widget(make_pill(updates_pill, beautiful.xcolor0)),
                     -- wrap_widget(make_pill(mem_pill, beautiful.xcolor0)),
                     wrap_widget(make_pill(time_pill, beautiful.xcolor0)),
-                    wrap_widget(make_pill(date_pill, beautiful.xcolor0)),
                     wrap_widget(awful.widget.only_on_screen(final_systray,
                                                             screen[1])),
                     wrap_widget({

@@ -16,7 +16,7 @@ end
 -- Add apps to autostart here
 autostart_apps = {
     -- Xbinds for mouse
-    "xbindkeys",
+    -- "xbindkeys",
 
     -- Set Resolution
     "xrandr --output DisplayPort-1 --mode 2560x1440 --rate 143.86 --output DisplayPort-0 --mode 2560x1440 --rate 143.86 --right-of DisplayPort-1 --primary",
