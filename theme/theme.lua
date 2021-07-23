@@ -3,7 +3,6 @@
 -- | __| '_ \ / _ \ '_ ` _ \ / _ \
 -- | |_| | | |  __/ | | | | |  __/
 --  \__|_| |_|\___|_| |_| |_|\___|
-local awful = require("awful")
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -61,7 +60,7 @@ theme.xcolor15 = xrdb.color15 or "#eaeaea"
 theme.font_name = "Terminus Regular "
 theme.font = theme.font_name .. "10"
 theme.icon_font_name = "Terminus "
-theme.icon_font = theme.icon_font_name .. "12"
+theme.icon_font = theme.icon_font_name .. "10"
 theme.font_taglist = theme.icon_font_name .. "9"
 
 -- Background Colors
@@ -83,10 +82,10 @@ theme.button_close = theme.xcolor1
 
 -- Borders
 --
-theme.border_width = dpi(0)
+theme.border_width = dpi(1)
 theme.oof_border_width = dpi(0)
-theme.border_normal = theme.xcolor0
-theme.border_focus = theme.xcolor0
+theme.border_normal = theme.xbackground
+theme.border_focus = theme.xbackground
 theme.border_radius = dpi(3)
 theme.client_radius = dpi(3)
 theme.widget_border_width = dpi(0)
@@ -104,31 +103,31 @@ theme.taglist_font = theme.font_taglist
 theme.taglist_bg = theme.wibar_bg
 theme.taglist_bg_focus = theme.xcolor0
 theme.taglist_fg_focus = theme.xcolor6
-theme.taglist_bg_urgent = theme.xbackground
-theme.taglist_fg_urgent = theme.xcolor9
-theme.taglist_bg_occupied = theme.xbackground
+theme.taglist_bg_urgent = theme.color1
+theme.taglist_fg_urgent = theme.xforeground
+theme.taglist_bg_occupied = theme.wibar_bg
 theme.taglist_fg_occupied = theme.xcolor3
-theme.taglist_bg_empty = theme.xbackground
+theme.taglist_bg_empty = theme.wibar_bg
 theme.taglist_fg_empty = theme.xcolor8
-theme.taglist_bg_volatile = theme.xbackground
+theme.taglist_bg_volatile = theme.wibar_bg
 theme.taglist_fg_volatile = theme.xcolor11
 theme.taglist_disable_icon = true
-theme.taglist_shape_focus = helpers.rrect(theme.border_radius)
+-- theme.taglist_shape_focus = helpers.rrect(theme.border_radius)
 
 -- Tasklist
 --
 theme.tasklist_font = theme.font
 theme.tasklist_plain_task_name = true
-theme.tasklist_bg_focus = theme.xcolor0
+theme.tasklist_bg_focus = theme.xbackground .. "00"
 theme.tasklist_fg_focus = theme.xcolor6
-theme.tasklist_bg_minimize = theme.xcolor0 .. "70"
+theme.tasklist_bg_minimize = theme.xbackground .. "00"
 theme.tasklist_fg_minimize = theme.xforeground .. "70"
-theme.tasklist_bg_normal = theme.xcolor0 .. "00"
+theme.tasklist_bg_normal = theme.xbackground
 theme.tasklist_fg_normal = theme.xforeground
 theme.tasklist_disable_task_name = false
 theme.tasklist_disable_icon = true
-theme.tasklist_bg_urgent = theme.xcolor0
-theme.tasklist_fg_urgent = theme.xcolor1
+theme.tasklist_bg_urgent = theme.xcolor1
+theme.tasklist_fg_urgent = theme.xforeground
 theme.tasklist_align = "center"
 
 -- Titlebars
@@ -192,7 +191,7 @@ theme = theme_assets.recolor_layout(theme, theme.xforeground)
 
 -- Gaps
 --
-theme.useless_gap = dpi(10)
+theme.useless_gap = dpi(7)
 
 -- Exit Screen
 --
@@ -201,7 +200,7 @@ theme.exit_screen_bg = theme.xcolor0 .. "70"
 
 -- Wibar
 --
-theme.wibar_height = dpi(30) + theme.widget_border_width
+theme.wibar_height = dpi(32) + theme.widget_border_width
 theme.wibar_margin = dpi(6)
 theme.wibar_spacing = dpi(6)
 theme.wibar_bg = theme.xbackground
@@ -271,5 +270,8 @@ theme.tag_preview_widget_border_width = theme.widget_border_width
 theme.tag_preview_widget_margin = dpi(0)
 
 theme.fade_duration = 250
+
+-- Seperator
+theme.seperator = "::"
 
 return theme

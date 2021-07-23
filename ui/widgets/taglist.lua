@@ -31,8 +31,6 @@ local get_taglist = function(s)
             {
                 {id = 'text_role', widget = wibox.widget.textbox},
                 id = 'margin_role',
-                top = dpi(2),
-                bottom = dpi(2),
                 left = dpi(10),
                 right = dpi(10),
                 widget = wibox.container.margin

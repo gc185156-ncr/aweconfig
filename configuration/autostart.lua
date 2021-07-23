@@ -15,8 +15,6 @@ end
 -- LuaFormatter off
 -- Add apps to autostart here
 autostart_apps = {
-    -- Xbinds for mouse
-    -- "xbindkeys",
 
     -- Set Resolution
     "xrandr --output DisplayPort-1 --mode 2560x1440 --rate 143.86 --output DisplayPort-0 --mode 2560x1440 --rate 143.86 --right-of DisplayPort-1 --primary",
@@ -34,9 +32,13 @@ autostart_apps = {
     -- Lua Language Server
     "/home/gcc/.config/nvim/lua-language-server/bin/Linux/lua-language-server -E ./main.lua",
 
+    -- Remap capslock to escape
+    "setxkbmap -option caps:escape",
+
     -- Media Player daemon
     "mpd ~/.config/mpd/mpd.conf",
-    "mpc update"
+    "mpc update",
+    "mpdas"
 
 }
 

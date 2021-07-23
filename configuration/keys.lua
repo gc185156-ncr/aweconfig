@@ -2,12 +2,11 @@
 -- Contains Global Keys
 local gears = require("gears")
 local awful = require("awful")
--- local beautiful = require("beautiful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
 -- Custom modules
 local bling = require("module.bling")
--- local awestore = require("awestore")
+local switcher = require("module.awesome-switcher")
 
 -- Client and Tabs Bindings
 awful.keyboard.append_global_keybindings({
@@ -116,9 +115,13 @@ awful.keyboard.append_global_keybindings({
 
     -- Alt Tab
     awful.key({"Mod1"}, "Tab", function()
-        awful.client.focus.history.previous()
-        if client.focus then client.focus:raise() end
-    end, {description = "go back", group = "client"}), -- Switch Layout
+        switcher.switch(1, "Mod1", "Alt_L", "Shift", "Tab")
+        bling.module.flash_focus.flashfocus(client.focus)
+
+    end), awful.key({"Mod1", "Shift"}, "Tab", function()
+        switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
+        bling.module.flash_focus.flashfocus(client.focus)
+    end), -- Switch Layout
     awful.key({modkey}, "Tab", function() awful.layout.inc(-1) end,
               {description = "select previous", group = "layout"}),
 

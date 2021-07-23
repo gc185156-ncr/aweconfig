@@ -14,6 +14,8 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 
+local switcher = require("module.awesome-switcher")
+
 require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
@@ -38,11 +40,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
     screen[s].padding = {left = 0, right = 0, top = 0, bottom = 0}
 
     -- Each screen has its own tag table.
-    awful.tag({"I", "II", "III", "IV", "V"}, s, awful.layout.layouts[1])
+    awful.tag({"i", "ii", "iii", "iv", "v"}, s, awful.layout.layouts[1])
 end)
 
 -- Import Daemons and Widgets
-require("signal")
 require("ui")
 
 awful.spawn.with_shell("~/.screenlayout/layout.sh")
