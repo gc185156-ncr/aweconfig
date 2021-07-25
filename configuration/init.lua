@@ -14,9 +14,10 @@ terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " start " .. editor
 browser = "firefox"
-filemanager = "nautilus"
+filemanager = "ranger"
 discord = "discord"
-launcher = "/home/gcc/.config/rofi/launcher.sh"
+launcher =
+    "alacritty --title fzf-launcher -e /home/gcc/.config/awesome/scripts/launcher.sh"
 music = terminal .. ' start --class music ncmpcpp'
 
 -- Global Vars

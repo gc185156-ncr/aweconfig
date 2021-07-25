@@ -82,10 +82,10 @@ theme.button_close = theme.xcolor1
 
 -- Borders
 --
-theme.border_width = dpi(1)
+theme.border_width = dpi(2)
 theme.oof_border_width = dpi(0)
 theme.border_normal = theme.xbackground
-theme.border_focus = theme.xbackground
+theme.border_focus = theme.xcolor0
 theme.border_radius = dpi(3)
 theme.client_radius = dpi(3)
 theme.widget_border_width = dpi(0)
@@ -191,7 +191,7 @@ theme = theme_assets.recolor_layout(theme, theme.xforeground)
 
 -- Gaps
 --
-theme.useless_gap = dpi(7)
+theme.useless_gap = dpi(0)
 
 -- Exit Screen
 --

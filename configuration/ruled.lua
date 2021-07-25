@@ -25,6 +25,10 @@ ruled.client.connect_signal("request::rules", function()
         callback = awful.client.setslave
     }
 
+    ruled.client.append_rule {
+        class = "fzf-menu",
+        properties = {floating = true}
+    }
     -- Spawn floating clients centered
 
     ruled.client.append_rule {
