@@ -7,7 +7,7 @@ Awesome config based on javacafe01
 ### Packages Required
 
 ```
-    paru -S vicious alacritty picom-git luarocks nerd-fonts-terminus papirus-icon-theme:w
+    paru -S vicious alacritty picom-git luarocks nerd-fonts-terminus
 ```
 
 ### Awestore is also needed
@@ -18,5 +18,5 @@ Awesome config based on javacafe01
 
 ### Not required but...
 ```
-    paru -S redshfit neovim-nightly-bin xbindkeys rofi pavucontrol mpd mpc ncmpcpp nautilus firefox
+    paru -S redshfit neovim-nightly-bin pavucontrol mpd mpc ncmpcpp ranger firefox fzf lnch
 ```
