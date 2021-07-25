@@ -26,7 +26,7 @@ ruled.client.connect_signal("request::rules", function()
     }
 
     ruled.client.append_rule {
-        class = "fzf-menu",
+        rule_any = {class = "launcher", name = "fzf-launcher"},
         properties = {floating = true}
     }
     -- Spawn floating clients centered
@@ -35,17 +35,4 @@ ruled.client.connect_signal("request::rules", function()
         rule_any = {floating = true},
         properties = {placement = awful.placement.centered}
     }
-
-    -- Center Placement
-    --[[    ruled.client.append_rule {
-        id = "center_placement",
-        rule_any = {
-            type = {"dialog"},
-            class = {"Steam", "discord", "markdown_input", "synergys"},
-            instance = {"markdown_input"},
-            role = {"GtkFileChooserDialog", "conversation"}
-        },
-        properties = {placement = awful.placement.center}
-    } ]] --
-
 end)

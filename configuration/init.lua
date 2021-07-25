@@ -17,7 +17,7 @@ browser = "firefox"
 filemanager = "ranger"
 discord = "discord"
 launcher =
-    "alacritty --title fzf-launcher -e /home/gcc/.config/awesome/scripts/launcher.sh"
+    "alacritty --class launcher --title fzf-launcher -e /home/gcc/.config/awesome/scripts/launcher.sh"
 music = terminal .. ' start --class music ncmpcpp'
 
 -- Global Vars
