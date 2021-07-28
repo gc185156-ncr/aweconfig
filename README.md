@@ -1,5 +1,5 @@
 # Awesome Config
-Awesome config based on javacafe01
+Awesome config based on javacafe01's config
 
 
 ## Dependencies
