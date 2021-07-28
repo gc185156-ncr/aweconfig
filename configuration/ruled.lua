@@ -26,8 +26,9 @@ ruled.client.connect_signal("request::rules", function()
     }
 
     ruled.client.append_rule {
-        rule_any = {class = "launcher", name = "fzf-launcher"},
+        rule_any = {class = "float"},
         properties = {floating = true}
+
     }
     -- Spawn floating clients centered
 
