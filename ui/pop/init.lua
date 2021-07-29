@@ -6,11 +6,11 @@ local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local awestore = require("awestore")
-local dash_manager = require(... .. ".dash")
+local dashboard = require(... .. ".dashboard")
 
 awesome.connect_signal("widgets::exit_screen::toggle",
                        function() exit_manager.exit_screen_show() end)
 
-awesome.connect_signal("widgets::dashboard::show",
-                       function() dash_manager.dash_show() end)
-
+awesome.connect_signal("widgets::dashboard::show", function()
+    awesome.emit_signal("widgets::dock::visibility", dashboard.visible)
+end)

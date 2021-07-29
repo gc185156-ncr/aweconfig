@@ -1,3 +1,5 @@
+-- panel.lua
+-- Panel Widget
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
@@ -17,7 +19,6 @@ local sep = wibox.widget {
 
 -- CPU Widget ----------------------------------------------------------------
 local cpu_text = wibox.widget.textbox()
--- vicious.cache(vicious.widgets.cpu)
 vicious.register(cpu_text, vicious.widgets.cpu, " $1%", 3)
 
 cpu_text.markup = "<span foreground'" .. beautiful.xcolor13 .. "'>" ..
@@ -149,94 +150,51 @@ local fs_root_widget = wibox.widget {
     widget = wibox.container.margin
 }
 
--- Updates Widget -------------------------------------------------------------
-local updates_text = wibox.widget.textbox()
-vicious.cache(vicious.widgets.pkg)
-vicious.register(updates_text, vicious.widgets.pkg, " $1", 100, 'Arch')
-
-updates_text.markup = "<span foreground='" .. beautiful.xcolor11 .. "'>" ..
-                          updates_text.text .. "</span>"
-
-updates_text:connect_signal("widget::redraw_needed", function()
-    updates_text.markup = "<span foreground='" .. beautiful.xcolor11 .. "'>" ..
-                              updates_text.text .. "</span>"
-end)
-
-local updates_icon = wibox.widget {
-    font = beautiful.icon_font_name .. "16",
-    markup = "<span foreground='" .. beautiful.xcolor11 .. "'></span>",
-    align = "center",
-    valign = "center",
-    widget = wibox.widget.textbox
-}
-
-local updates_widget = wibox.widget {
-    {
-        {updates_icon, top = dpi(1), widget = wibox.container.margin},
-        helpers.horizontal_pad(3),
-        {updates_text, top = dpi(1), widget = wibox.container.margin},
-        layout = wibox.layout.fixed.horizontal
-    },
-    left = dpi(10),
-    right = dpi(10),
-    bottom = dpi(2),
-    widget = wibox.container.margin
-}
-
-local panelWidget = wibox.widget {
-    {cpu_widget, layout = wibox.layout.align.vertical},
-    layout = wibox.layout.flex.horizontal
-}
-
-local dash_manager = {}
-local dashboard = wibox({
-    visible = false,
-    ontop = true,
-    type = "splash",
-    screen = screen.primary
-})
-awful.placement.maximize(dashboard)
-dashboard.bg = beautiful.exit_screen_bg or "#111111"
-dashboard.fg = beautiful.exit_screen_fg or "#FEFEFE"
-
--- Add dash to each screen
-awful.screen.connect_for_each_screen(function(s)
-    if s == screen.primary then
-        s.dash = dashboard
-    else
-        s.dash = helpers.screen_mask(s, beautiful.exit_screen_bg or
-                                         beautiful.xbackground .. "80")
-    end
-end)
-
-local function set_visibility(v) for s in screen do s.dash.visible = v end end
-
-local dash_grabber
-
-dash_manager.dash_hide = function()
-    awful.keygrabber.stop(dash_grabber)
-    set_visibility(false)
-    awesome.emit_signal("widgets::splash::visibility", dashboard.visible)
+local wrap_widget = function(w)
+    local wrapped = wibox.widget {
+        w,
+        top = dpi(5),
+        left = dpi(3),
+        bottom = dpi(5),
+        right = dpi(3),
+        widget = wibox.container.margin
+    }
+    return wrapped
 end
 
-dash_manager.dash_show = function()
-    dash_grabber = awful.keygrabber.run(function(_, key, event)
-        -- Ignore case
-        key = key:lower()
-        if event == "release" then return end
-        if key == 'escape' or key == 'q' or key == 'x' then
-            dash_manager.dash_hide()
-        end
-    end)
-    set_visibility(true)
-    awesome.emit_signal("widgets::splash::visibility", dashboard.visible)
+local dashboard = wibox({
+    visible = false,
+    height = 60,
+    width = 500,
+    y = 40,
+    ontop = true,
+    bg = beautiful.xbackground,
+    fg = beautiful.xforeground,
+    border_width = dpi(1),
+    border_color = beautiful.xcolor0,
+    type = "dock",
+    screen = screen.primary
+})
+
+function dashboard:toggle(screen)
+    self.screen = screen
+    self.visible = not self.visible
+    awful.placement.bottom_left(self)
 end
 
 dashboard:setup{
+    layout = wibox.layout.align.vertical,
     nil,
-    {nil, panelWidget, expand = "none", layout = wibox.layout.align.horizontal},
-    expand = "none",
-    layout = wibox.layout.align.vertical
+    {
+        wrap_widget(temp_text),
+        wrap_widget(cpu_widget),
+        wrap_widget(mem_widget),
+        wrap_widget(fs_root_widget),
+        wrap_widget(fs_widget),
+        layout = wibox.layout.fixed.horizontal
+    }
 }
 
-return dash_manager
+return dashboard
+
+-- EOF -------------------------------------------------------------------------

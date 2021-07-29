@@ -7,6 +7,7 @@ local helpers = require("helpers")
 -- Custom modules
 local bling = require("module.bling")
 local switcher = require("module.awesome-switcher")
+local dashboard = require("ui.pop.dashboard")
 
 -- Client and Tabs Bindings
 awful.keyboard.append_global_keybindings({
@@ -91,9 +92,9 @@ awful.keyboard.append_global_keybindings({
     awful.key({modkey, "Shift"}, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-    awful.key({modkey, shift}, "d", function()
-        awesome.emit_signal("widgets::dashboard::toggle", mouse.screen)
-    end, {description = "show panel", group = "awesome"})
+    awful.key({modkey, shift}, "d",
+              function() dashboard:toggle(mouse.screen) end,
+              {description = "show panel", group = "awesome"})
 })
 
 -- Launcher and screen
