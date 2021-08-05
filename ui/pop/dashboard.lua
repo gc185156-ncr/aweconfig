@@ -166,7 +166,6 @@ local dashboard = wibox({
     visible = false,
     height = 60,
     width = 500,
-    y = 40,
     ontop = true,
     bg = beautiful.xbackground,
     fg = beautiful.xforeground,
@@ -179,7 +178,8 @@ local dashboard = wibox({
 function dashboard:toggle(screen)
     self.screen = screen
     self.visible = not self.visible
-    awful.placement.bottom_left(self)
+    awful.placement.top_right(self, {offset = {x = -10, y = 40}})
+    -- self.y = 40
 end
 
 dashboard:setup{

@@ -208,7 +208,7 @@ client.connect_signal("request::default_keybindings", function()
                   {description = "close", group = "client"}),
 
         -- Move window to other monitor
-        awful.key({modkey}, "o", function(c) c:move_to_screen() end,
+        awful.key({modkey}, "a", function(c) c:move_to_screen() end,
                   {description = "move to screen", group = "client"}),
 
         -- Toggle sticky window

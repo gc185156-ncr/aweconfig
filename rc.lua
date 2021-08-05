@@ -45,6 +45,7 @@ end)
 
 -- Import Daemons and Widgets
 require("ui")
+require("signals")
 
 awful.spawn.with_shell("~/.screenlayout/layout.sh")
 

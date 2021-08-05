@@ -25,10 +25,6 @@ autostart_apps = {
     -- Redshift
     "redshift",
 
-    -- Compositor
-    "picom --experimental-backends --config " ..
-        gears.filesystem.get_configuration_dir() .. "configuration/picom.conf",
-
     -- Lua Language Server
     "/home/gcc/.config/nvim/lua-language-server/bin/Linux/lua-language-server -E ./main.lua",
 
