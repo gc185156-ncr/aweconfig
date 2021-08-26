@@ -17,7 +17,9 @@ browser = "firefox"
 filemanager = "alacritty -e ranger"
 discord = "discord"
 launcher =
-    "alacritty --class float,float --title fzf-launcher -e /home/gcc/.config/awesome/scripts/launcher.sh"
+    "alacritty --class float,float --title launcher -e /home/gcc/.config/awesome/scripts/launcher.sh"
+games =
+    "alacritty --class float,float --title games -e /home/gcc/.config/awesome/scripts/games.sh"
 music = terminal .. ' start --class music ncmpcpp'
 
 -- Global Vars
@@ -32,9 +34,7 @@ ctrl = "Control"
 
 local yy = 10 + beautiful.wibar_height
 
--- Enable Playerctl Module from Bling
-bling.signal.playerctl.enable {ignore = "firefox", update_on_activity = true}
-
+-- Bling Tab Preview
 bling.widget.tag_preview.enable {
     show_client_content = true,
     x = dpi(10),

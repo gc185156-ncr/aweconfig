@@ -27,7 +27,7 @@ local music_control = bling.module.scratchpad:new{
     autoclose = true,
     titlebars_enabled = false,
     floating = true,
-    geometry = {x = 20, y = 820, height = 600, width = 2520},
+    geometry = {x = 500, y = 920, height = 500, width = 1600},
     reapply = true,
     dont_focus_before_close = false,
     awestore = {y = bottom_drawer}

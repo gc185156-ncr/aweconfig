@@ -17,6 +17,11 @@ ruled.client.connect_signal("request::rules", function()
         }
     }
 
+    ruled.client.append_rule {
+        rule_any = {type = {"normal", "dialog"}},
+        properties = {titlebars_enabled = true}
+    }
+
     -- Tasklist order
     ruled.client.append_rule {
         id = "tasklist_order",

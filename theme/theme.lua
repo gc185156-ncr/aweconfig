@@ -252,10 +252,6 @@ theme.notification_spacing = 10
 --
 theme.weather_city = "Raleigh"
 
--- Swallowing
---
-theme.dont_swallow_classname_list = {"firefox", "gimp", "nautilus"}
-
 -- Tag Preview
 --
 theme.tag_preview_widget_border_radius = dpi(theme.border_radius)

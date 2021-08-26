@@ -12,33 +12,15 @@ local function run_once(cmd)
                                           findme, cmd))
 end
 
--- LuaFormatter off
 -- Add apps to autostart here
 autostart_apps = {
 
-    -- Set Resolution
     "xrandr --output DisplayPort-1 --mode 2560x1440 --rate 143.86 --output DisplayPort-0 --mode 2560x1440 --rate 143.86 --right-of DisplayPort-1 --primary",
-
-    -- Network Manager Applet
-    "nm-applet",
-
-    -- Redshift
-    "redshift",
-
-    -- Lua Language Server
-    "/home/gcc/.config/nvim/lua-language-server/bin/Linux/lua-language-server -E ./main.lua",
-
-    -- Remap capslock to escape
-    "setxkbmap -option caps:escape",
-
-    -- Media Player daemon
-    "mpd ~/.config/mpd/mpd.conf",
-    "mpc update",
-    "mpdas"
-
+    "redshift", "setxkbmap -option caps:escape",
+    "[ ! -s ~/.config/mpd/pid ] && mpd ~/.config/mpd/mpd.conf",
+    "[[ -z $(pgrep -xU $UID mpdas) ]] && mpdas"
 }
 
--- LuaFormatter on
 for app = 1, #autostart_apps do run_once(autostart_apps[app]) end
 
 -- EOF ------------------------------------------------------------------------

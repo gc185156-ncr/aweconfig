@@ -15,7 +15,7 @@ local disk_bar = wibox.widget {
 }
 
 local disk_text = wibox.widget {
-    text = "ROOT",
+    text = "DATA",
     font = beautiful.font,
     color = beautiful.xforeground,
     forced_width = w,
@@ -23,7 +23,7 @@ local disk_text = wibox.widget {
     widget = wibox.widget.textbox
 }
 
-awesome.connect_signal("signal::disk", function(used, total)
+awesome.connect_signal("signal::disk2", function(used, total)
     disk_bar.value = tonumber(100 * used / total)
 end)
 

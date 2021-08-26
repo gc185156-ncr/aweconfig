@@ -109,8 +109,12 @@ awful.keyboard.append_global_keybindings({
     awful.key({modkey}, "p",
               function() awesome.emit_signal("scratch::music") end, {}),
 
-    -- Show Rofi Menu
+    -- Show Launcher
     awful.key({modkey}, "d", function() awful.spawn(launcher) end,
+              {description = "show rofi ", group = "launcher"}),
+
+    -- Show Game Launcher
+    awful.key({modkey}, "g", function() awful.spawn(games) end,
               {description = "show rofi ", group = "launcher"}),
 
     -- Change Monitor Focus
