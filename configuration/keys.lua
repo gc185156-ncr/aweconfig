@@ -52,14 +52,12 @@ awful.keyboard.append_global_keybindings({
               {description = "decrease volume", group = "awesome"}),
     awful.key({}, "XF86AudioMute", function() awful.spawn("pamixer -t") end,
               {description = "mute volume", group = "awesome"}), -- Media Control
-    awful.key({}, "XF86AudioPlay",
-              function() awful.spawn("playerctl play-pause") end,
-              {description = "toggle playerctl", group = "awesome"}),
-    awful.key({}, "XF86AudioPrev",
-              function() awful.spawn("playerctl previous") end,
-              {description = "playerctl previous", group = "awesome"}),
-    awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end,
-              {description = "playerctl next", group = "awesome"}),
+    awful.key({}, "XF86AudioPlay", function() awful.spawn("mpc toggle") end,
+              {description = "toggle mpd play/pause", group = "awesome"}),
+    awful.key({}, "XF86AudioPrev", function() awful.spawn("mpc prev") end,
+              {description = "mpd previous track", group = "awesome"}),
+    awful.key({}, "XF86AudioNext", function() awful.spawn("mpd next") end,
+              {description = "mpd next track", group = "awesome"}),
 
     -- Screen Shots/Vids
     awful.key({}, "Print", function()
@@ -158,7 +156,7 @@ awful.keyboard.append_global_keybindings({
     end, {description = "open a terminal", group = "launcher"}),
 
     -- Open File Manager
-    awful.key({modkey}, "f", function() awful.spawn(filemanager) end,
+    awful.key({modkey}, "r", function() awful.spawn(filemanager) end,
               {description = "open file browser", group = "launcher"}),
 
     -- Open Firefox

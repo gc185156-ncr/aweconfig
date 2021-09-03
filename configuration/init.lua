@@ -19,7 +19,7 @@ discord = "discord"
 launcher =
     "alacritty --class float,float --title launcher -e /home/gcc/.config/awesome/scripts/launcher.sh"
 games =
-    "alacritty --class float,float --title games -e /home/gcc/.config/awesome/scripts/games.sh"
+    "alacritty --class float,float --title games -e /home/gcc/.config/awesome/scripts/games-launcher.sh"
 music = terminal .. ' start --class music ncmpcpp'
 
 -- Global Vars
