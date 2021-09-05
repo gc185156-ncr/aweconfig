@@ -6,7 +6,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
 -- Custom modules
 local bling = require("module.bling")
-local switcher = require("module.awesome-switcher")
 local dashboard = require("ui.pop.dashboard")
 
 -- Client and Tabs Bindings
@@ -121,14 +120,14 @@ awful.keyboard.append_global_keybindings({
               {description = "focus the next screen", group = "screen"}),
 
     -- Alt Tab
-    awful.key({"Mod1"}, "Tab", function()
-        switcher.switch(1, "Mod1", "Alt_L", "Shift", "Tab")
-        bling.module.flash_focus.flashfocus(client.focus)
-
-    end), awful.key({"Mod1", "Shift"}, "Tab", function()
-        switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
-        bling.module.flash_focus.flashfocus(client.focus)
-    end), -- Switch Layout
+--     awful.key({"Mod1"}, "Tab", function()
+--         switcher.switch(1, "Mod1", "Alt_L", "Shift", "Tab")
+--         bling.module.flash_focus.flashfocus(client.focus)
+--     end), awful.key({"Mod1", "Shift"}, "Tab", function()
+--         switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
+--         bling.module.flash_focus.flashfocus(client.focus)
+--     end), -- Switch Layout
+--
     awful.key({modkey}, "Tab", function() awful.layout.inc(-1) end,
               {description = "select previous", group = "layout"}),
 

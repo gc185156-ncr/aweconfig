@@ -10,6 +10,7 @@ bling.module.tabbed.pick()            -- picks a client with your cursor to add 
 bling.module.tabbed.pop()             -- removes the focused client from the tabbing group
 bling.module.tabbed.iter()            -- iterates through the currently focused tabbing group
 bling.module.tabbed.pick_with_dmenu() -- picks a client with a dmenu application (defaults to rofi, other options can be set with a string parameter like "dmenu")
+bling.module.tabbed.pick_by_direction(dir) -- picks a client based on direction ("up", "down", "left" or "right")
 ```
 
 ### Theme Variables
@@ -29,6 +30,7 @@ theme.tabbar_bg_normal = "#000000"          -- background color of the focused c
 theme.tabbar_fg_normal = "#ffffff"          -- foreground color of the focused client on the tabbar
 theme.tabbar_bg_focus  = "#1A2026"          -- background color of unfocused clients on the tabbar
 theme.tabbar_fg_focus  = "#ff0000"          -- foreground color of unfocused clients on the tabbar
+theme.tabbar_disable = false                -- disable the tab bar entirely
 
 -- the following variables are currently only for the "modern" tabbar style
 theme.tabbar_color_close = "#f9929b"        -- chnges the color of the close button
@@ -43,3 +45,18 @@ Modern theme:
 <img src="https://imgur.com/omowmIQ.png" width="600"/>
 
 *screenshot by [javacafe](https://github.com/JavaCafe01)*
+
+### Signals
+The tabbed module emits a few signals for the purpose of integration,
+```lua
+-- bling::tabbed::update -- triggered whenever a tabbed object is updated
+--                tabobj -- the object that caused the update
+-- bling::tabbed::client_added -- triggered whenever a new client is added to a tab group
+--				  tabobj -- the object that the client was added to
+--				  client -- the client that added
+-- bling::tabbed::client_removed -- triggered whenever a client is removed from a tab group
+--				  tabobj -- the object that the client was removed from
+--				  client -- the client that was removed
+-- bling::tabbed::changed_focus -- triggered whenever a tab group's focus is changed
+--				  tabobj -- the modified tab group
+```
