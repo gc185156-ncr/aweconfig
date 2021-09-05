@@ -7,16 +7,10 @@ Awesome config based on javacafe01's config
 ### Packages Required
 
 ```
-    paru -S alacritty picom luarocks nerd-fonts-terminus
-```
-
-### Awestore is also needed
-
-```
-    sudo luarocks --lua-version 5.3 install awestore
+    paru -S alacritty picom luarocks nerd-fonts-terminus lnch fzf 
 ```
 
 ### Not required but...
 ```
-    paru -S redshfit neovim-nightly-bin pavucontrol mpd mpc ncmpcpp ranger firefox fzf lnch
+    paru -S redshfit neovim-nightly-bin pavucontrol firefox fzf ranger mpd mpc ncmpcpp firefox
 ```
