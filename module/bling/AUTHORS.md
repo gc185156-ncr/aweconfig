@@ -5,4 +5,4 @@ The following developers have contributed major code to bling:
  * [Grumph](https://github.com/Grumph)
  * [Bysmutheye](https://github.com/Bysmutheye)
  * [HumblePresent](https://github.com/HumblePresent)
- * [undefinedDarkness](https://github.com/undefinedDarkness)
+ * [Kasper24](https://github.com/Kasper24)

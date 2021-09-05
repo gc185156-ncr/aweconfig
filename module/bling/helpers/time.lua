@@ -1,4 +1,7 @@
+
+
 local time = {}
+
 
 --- Parse a time string to seconds (from midnight)
 --
@@ -11,6 +14,7 @@ function time.hhmmss_to_seconds(time)
     return (hour_sec + min_sec + get_sec)
 end
 
+
 --- Get time difference in seconds.
 --
 -- @tparam string base The time to compare from (`HH:MM:SS`).
@@ -20,5 +24,6 @@ function time.time_diff(base, compare)
     local diff = time.hhmmss_to_seconds(base) - time.hhmmss_to_seconds(compare)
     return diff
 end
+
 
 return time

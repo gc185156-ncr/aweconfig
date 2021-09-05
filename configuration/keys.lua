@@ -119,15 +119,9 @@ awful.keyboard.append_global_keybindings({
               function() awful.screen.focus_relative(1) end,
               {description = "focus the next screen", group = "screen"}),
 
-    -- Alt Tab
---     awful.key({"Mod1"}, "Tab", function()
---         switcher.switch(1, "Mod1", "Alt_L", "Shift", "Tab")
---         bling.module.flash_focus.flashfocus(client.focus)
---     end), awful.key({"Mod1", "Shift"}, "Tab", function()
---         switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
---         bling.module.flash_focus.flashfocus(client.focus)
---     end), -- Switch Layout
---
+   -- Alt Tab
+    awful.key({"Mod1"}, "Tab", function()
+      awesome.emit_signal("bling::window_switcher::visibility", mouse.screen)    end, {description = "Window Switcher", group = "client"}),
     awful.key({modkey}, "Tab", function() awful.layout.inc(-1) end,
               {description = "select previous", group = "layout"}),
 

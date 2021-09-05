@@ -36,24 +36,24 @@ theme.delete_grey_icon = icon_path .. "notif-center/delete_grey.png"
 
 -- Load ~/.Xresources colors and set fallback colors
 --
-theme.xbackground = xrdb.background or "#1a2026"
-theme.xforeground = xrdb.foreground or "#ffffff"
-theme.xcolor0 = xrdb.color0 or "#29343d"
-theme.xcolor1 = xrdb.color1 or "#f9929b"
-theme.xcolor2 = xrdb.color2 or "#7ed491"
-theme.xcolor3 = xrdb.color3 or "#fbdf90"
-theme.xcolor4 = xrdb.color4 or "#a3b8ef"
-theme.xcolor5 = xrdb.color5 or "#ccaced"
-theme.xcolor6 = xrdb.color6 or "#9ce5c0"
-theme.xcolor7 = xrdb.color7 or "#ffffff"
-theme.xcolor8 = xrdb.color8 or "#3b4b58"
-theme.xcolor9 = xrdb.color9 or "#fca2aa"
-theme.xcolor10 = xrdb.color10 or "#a5d4af"
-theme.xcolor11 = xrdb.color11 or "#fbeab9"
-theme.xcolor12 = xrdb.color12 or "#bac8ef"
-theme.xcolor13 = xrdb.color13 or "#d7c1ed"
-theme.xcolor14 = xrdb.color14 or "#c7e5d6"
-theme.xcolor15 = xrdb.color15 or "#eaeaea"
+theme.xbackground = xrdb.background or "#1d2021"
+theme.xforeground = xrdb.foreground or "#ebdbb2"
+theme.xcolor0 = xrdb.color0 or "#282828"
+theme.xcolor1 = xrdb.color1 or "#cc241d"
+theme.xcolor2 = xrdb.color2 or "#98971a"
+theme.xcolor3 = xrdb.color3 or "#d79921"
+theme.xcolor4 = xrdb.color4 or "#458588"
+theme.xcolor5 = xrdb.color5 or "#b16286"
+theme.xcolor6 = xrdb.color6 or "#689d6a"
+theme.xcolor7 = xrdb.color7 or "#a89984"
+theme.xcolor8 = xrdb.color8 or "#928374"
+theme.xcolor9 = xrdb.color9 or "#fb4934"
+theme.xcolor10 = xrdb.color10 or "#b8bb26"
+theme.xcolor11 = xrdb.color11 or "#fabd2f"
+theme.xcolor12 = xrdb.color12 or "#83a598"
+theme.xcolor13 = xrdb.color13 or "#d3869b"
+theme.xcolor14 = xrdb.color14 or "#83c07c"
+theme.xcolor15 = xrdb.color15 or "#ebdbb2"
 
 -- Fonts
 --
@@ -249,10 +249,6 @@ theme.collision_screen_fg_focus = theme.xcolor4
 
 theme.notification_spacing = 10
 
--- Weather
---
-theme.weather_city = "Raleigh"
-
 -- Tag Preview
 --
 theme.tag_preview_widget_border_radius = dpi(theme.border_radius)
@@ -267,6 +263,13 @@ theme.tag_preview_widget_border_width = theme.widget_border_width
 theme.tag_preview_widget_margin = dpi(0)
 
 theme.fade_duration = 250
+
+-- Window Switcher
+theme.window_switcher_widget_bg = theme.xbackground
+theme.window_switcher_widget_border_width = dpi(0)
+theme.window_switcher_name_normal_color = theme.xforeground
+theme.window_switcher_name_focus_color = theme.xcolor14
+theme.window_switcher_icon_width = dpi(0)
 
 -- Seperator
 theme.seperator = "::"

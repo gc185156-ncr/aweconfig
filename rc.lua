@@ -7,6 +7,7 @@ pcall(require, "luarocks.loader")
 local gfs = require("gears.filesystem")
 local awful = require("awful")
 local gears = require("gears")
+local bling = require("module.bling")
 -- Widget and layout library
 require("awful.autofocus")
 
@@ -56,6 +57,7 @@ local close = gears.surface.load_uncached(
 -- Import Daemons and Widgets
 require("ui")
 require("signals")
+bling.widget.window_switcher.enable {}
 
 -- Garbage Collector Settings
 collectgarbage("setpause", 110)

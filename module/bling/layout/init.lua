@@ -15,16 +15,12 @@ beautiful.layout_centered = centered.get_icon()
 local equalarea = require(... .. ".equalarea")
 beautiful.layout_equalarea = equalarea.get_icon()
 
-local deck = require(... .. ".deck")
-beautiful.layout_deck = deck.get_icon()
-
 local layout = {
     mstab = mstab.layout,
     centered = centered.layout,
     vertical = vertical.layout,
     horizontal = horizontal.layout,
-    equalarea = equalarea.layout,
-    deck = deck.layout,
+    equalarea = equalarea.layout
 }
 
 return layout

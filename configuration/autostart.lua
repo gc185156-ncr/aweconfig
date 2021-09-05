@@ -20,8 +20,6 @@ autostart_apps = {
     "redshift",
     -- Remap Capslock
     "setxkbmap -option caps:escape",
-    -- Network Manager Tray
-    "nm-applet",
     -- Compositor
     "picom --experimental-backends --config ~/.config/picom/picom.conf",
     -- MPD
