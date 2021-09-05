@@ -7,8 +7,6 @@ local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
 local ruled = require("ruled")
 
-require("ui.notifs.playerctl")
-
 naughty.config.defaults.ontop = true
 naughty.config.defaults.screen = awful.screen.focused()
 naughty.config.defaults.timeout = 3
@@ -222,7 +220,7 @@ naughty.connect_signal("request::display", function(n)
             },
             bg = beautiful.xbackground,
             border_width = beautiful.notif_border_width,
-            border_color = beautiful.xcolor8,
+            border_color = beautiful.notif_border_color,
             shape = helpers.rrect(beautiful.border_radius),
             widget = wibox.container.background
         }

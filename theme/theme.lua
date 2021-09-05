@@ -90,6 +90,7 @@ theme.border_radius = dpi(3)
 theme.client_radius = dpi(3)
 theme.widget_border_width = dpi(0)
 theme.widget_border_color = theme.xcolor0
+theme.notif_border_color = theme.xbackground
 
 -- Taglist
 --

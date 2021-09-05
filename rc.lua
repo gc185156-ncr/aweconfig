@@ -45,7 +45,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 end)
 
 awful.rules.rules = {
-    {rule_any = {type = {"dialog"}}, properties = {titlebars_enabled = false}}
+    {rule_any = {type = {"dialog"}}, properties = {titlebars_enabled = true}}
 }
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
@@ -56,8 +56,6 @@ local close = gears.surface.load_uncached(
 -- Import Daemons and Widgets
 require("ui")
 require("signals")
-
-awful.spawn.with_shell("~/.screenlayout/layout.sh")
 
 -- Garbage Collector Settings
 collectgarbage("setpause", 110)
