@@ -7,7 +7,7 @@ Awesome config based on javacafe01's config
 ### Packages Required
 
 ```
-    paru -S alacritty picom-git luarocks nerd-fonts-terminus
+    paru -S alacritty picom luarocks nerd-fonts-terminus
 ```
 
 ### Awestore is also needed
