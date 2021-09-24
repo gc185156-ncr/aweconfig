@@ -9,11 +9,10 @@ local function check_if_alive(cmd)
 end
 
 local music_control = bling.module.scratchpad:new{
-    command = "alacritty --class=ncmpcpp --command ncmpcpp",
+    command = "alacritty --title music --class ncmpcpp,Scratchpad --command ncmpcpp",
     rule = {instance = "ncmpcpp"},
     sticky = true,
     autoclose = true,
-    titlebars_enabled = false,
     floating = true,
     geometry = {x = 500, y = 920, height = 500, width = 1600},
     reapply = true,
@@ -22,9 +21,9 @@ local music_control = bling.module.scratchpad:new{
 
 awesome.connect_signal("scratch::music", function() music_control:toggle() end)
 
-local quake_term = bling.module.scratchpad:new{
-    command = "alacritty --class=quake",
-    rule = {instance = "quake"},
+local drop_term = bling.module.scratchpad:new{
+    command = "alacritty --title term --class drop_term,Scratchpad",
+    rule = {instance = "drop_term"},
     sticky = true,
     autoclose = true,
     floating = true,
@@ -33,4 +32,34 @@ local quake_term = bling.module.scratchpad:new{
     dont_focus_before_close = false,
 }
 
-awesome.connect_signal("scratch::term", function() quake_term:toggle() end)
+awesome.connect_signal("scratch::term", function() drop_term:toggle() end)
+
+
+local launcher = bling.module.scratchpad:new{
+    command = "alacritty --title launcher --class launcher,Scratchpad -e /home/gcc/.config/awesome/scripts/launcher.sh",
+    rule = {instance = "launcher"},
+    sticky = true,
+    autoclose = false,
+    floating = true,
+    geometry = {x = 880, y = 420, height = 600, width = 800},
+    reapply = true,
+    dont_focus_before_close = true,
+}
+
+awesome.connect_signal("scratch::launcher", function() launcher:toggle() end)
+
+
+local games = bling.module.scratchpad:new{
+    command = "alacritty --title games --class games,Scratchpad -e /home/gcc/.config/awesome/scripts/games-launcher.sh",
+    rule = {instance = "games"},
+    sticky = true,
+    autoclose = false,
+    floating = true,
+    geometry = {x = 880, y = 420, height = 600, width = 800},
+    reapply = true,
+    dont_focus_before_close = true,
+}
+
+awesome.connect_signal("scratch::games", function() games:toggle() end)
+
+

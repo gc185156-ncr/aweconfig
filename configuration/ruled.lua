@@ -17,11 +17,6 @@ ruled.client.connect_signal("request::rules", function()
         }
     }
 
-    ruled.client.append_rule {
-        rule_any = {type = {"normal", "dialog"}},
-        properties = {titlebars_enabled = true}
-    }
-
     -- Tasklist order
     ruled.client.append_rule {
         id = "tasklist_order",
@@ -31,14 +26,23 @@ ruled.client.connect_signal("request::rules", function()
     }
 
     ruled.client.append_rule {
-        rule_any = {class = "float"},
-        properties = {floating = true}
-
-    }
-    -- Spawn floating clients centered
-
-    ruled.client.append_rule {
         rule_any = {floating = true},
         properties = {placement = awful.placement.centered}
+    }
+
+        -- Borders
+    ruled.client.append_rule {
+        id = "borders",
+        rule_any = {type = {"normal", "dialog"}},
+        except_any = {
+            class = {"Steam"},
+            role = {"Popup"},
+            type = {"splash"},
+            name = {"^discord.com is sharing your screen.$"}
+        },
+        properties = {
+            border_width = beautiful.border_width,
+            border_color = beautiful.border_normal
+        }
     }
 end)

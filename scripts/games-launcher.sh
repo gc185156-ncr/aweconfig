@@ -38,7 +38,7 @@ for library in $(steam-libraries); do
         title=$(awk -F\" '/"name"/ {print $4}' "$manifest" | tr -d "™®")
         entry=$APP_PATH/${title}.env
         # TODO Investigate using ueberzug to dispaly boxart
-        boxart=$STEAM_ROOT/appcache/librarycache/${appid}_library_600x900.jpg
+        hoxart=$STEAM_ROOT/appcache/librarycache/${appid}_library_600x900.jpg
         # Filter out non-game entries (e.g. Proton versions or soundtracks) by
         # checking for boxart and other criteria
         if echo "$title" | grep -qe "Soundtrack"; then

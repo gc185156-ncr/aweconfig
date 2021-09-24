@@ -45,10 +45,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
     awful.tag({"i", "ii", "iii", "iv", "v"}, s, awful.layout.layouts[1])
 end)
 
-awful.rules.rules = {
-    {rule_any = {type = {"dialog"}}, properties = {titlebars_enabled = true}}
-}
-
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 
 local close = gears.surface.load_uncached(
@@ -57,7 +53,20 @@ local close = gears.surface.load_uncached(
 -- Import Daemons and Widgets
 require("ui")
 require("signals")
-bling.widget.window_switcher.enable {}
+
+bling.widget.window_switcher.enable {
+    type = "thumbnail", -- set to anything other than "thumbnail" to disable client previews
+    -- keybindings (the examples provided are also the default if kept unset)
+    hide_window_switcher_key = "Escape", -- The key on which to close the popup
+    minimize_key = "n",     -- The key on which to minimize the selected client
+    unminimize_key = "N",   -- The key on which to unminimize all clients
+    kill_client_key = "q",  -- The key on which to close the selected client
+    cycle_key = "Tab",      -- The key on which to cycle through all clients
+    previous_key = "Left",  -- The key on which to select the previous client
+    next_key = "Right",     -- The key on which to select the next client
+    vim_previous_key = "h", -- Alternative key on which to select the previous client
+    vim_next_key = "l",     -- Alternative key on which to select the next client
+}
 
 -- Garbage Collector Settings
 collectgarbage("setpause", 110)

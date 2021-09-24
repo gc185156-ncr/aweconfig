@@ -107,12 +107,12 @@ awful.keyboard.append_global_keybindings({
               function() awesome.emit_signal("scratch::music") end, {}),
 
     -- Show Launcher
-    awful.key({modkey}, "d", function() awful.spawn(launcher) end,
-              {description = "show rofi ", group = "launcher"}),
+    awful.key({modkey}, "d", function() awesome.emit_signal("scratch::launcher") end,
+              {description = "Show program launcher", group = "Scratchpad"}),
 
     -- Show Game Launcher
-    awful.key({modkey}, "g", function() awful.spawn(games) end,
-              {description = "show rofi ", group = "launcher"}),
+    awful.key({modkey}, "g", function() awesome.emit_signal("scratch::games") end,
+              {description = "Show games launcher", group = "Scratchpad"}),
 
     -- Change Monitor Focus
     awful.key({modkey, "Shift"}, "Tab",
@@ -121,7 +121,7 @@ awful.keyboard.append_global_keybindings({
 
    -- Alt Tab
     awful.key({"Mod1"}, "Tab", function()
-      awesome.emit_signal("bling::window_switcher::visibility", mouse.screen)    end, {description = "Window Switcher", group = "client"}),
+      awesome.emit_signal("bling::window_switcher::turn_on", mouse.screen)    end, {description = "Window Switcher", group = "client"}),
     awful.key({modkey}, "Tab", function() awful.layout.inc(-1) end,
               {description = "select previous", group = "layout"}),
 
