@@ -1,5 +1,5 @@
 # Awesome Config
-Awesome config based on javacafe01's config
+This config is essentially a heavily modified version of [Javacafe01's config](https://github.com/JavaCafe01/awedots)
 
 
 ## Dependencies
