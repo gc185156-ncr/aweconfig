@@ -7,10 +7,10 @@ Awesome config based on javacafe01's config
 ### Packages Required
 
 ```
-    paru -S alacritty picom luarocks nerd-fonts-terminus lnch fzf 
+    paru -S awesome-git alacritty luarocks nerd-fonts-terminus ranger
 ```
 
-### Not required but...
+### Not required but are also used bythe config.
 ```
-    paru -S redshfit neovim-nightly-bin pavucontrol firefox fzf ranger mpd mpc ncmpcpp firefox
+    paru -S redshfit neovim pavucontrol firefox fzf mpd mpc ncmpcpp firefox steam picom lnch fzf
 ```
