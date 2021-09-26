@@ -14,7 +14,7 @@ local music_control = bling.module.scratchpad:new{
     sticky = true,
     autoclose = true,
     floating = true,
-    geometry = {x = 500, y = 920, height = 500, width = 1600},
+    geometry = {x = 500, y = 915, height = 500, width = 1600},
     reapply = true,
     dont_focus_before_close = false,
 }
