@@ -1,5 +1,5 @@
 # Awesome Config
-Awesome config based on javacafe01's config
+This config is essentially a heavily modified version of [Javacafe01's config](https://github.com/JavaCafe01/awedots)
 
 
 ## Dependencies
@@ -7,10 +7,10 @@ Awesome config based on javacafe01's config
 ### Packages Required
 
 ```
-    paru -S alacritty picom luarocks nerd-fonts-terminus lnch fzf 
+    paru -S awesome-git alacritty luarocks nerd-fonts-terminus ranger
 ```
 
-### Not required but...
+### Not required but are also used bythe config.
 ```
-    paru -S redshfit neovim-nightly-bin pavucontrol firefox fzf ranger mpd mpc ncmpcpp firefox
+    paru -S redshfit neovim pavucontrol firefox fzf mpd mpc ncmpcpp firefox steam picom lnch fzf
 ```
