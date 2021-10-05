@@ -247,9 +247,9 @@ theme.collision_screen_fg = theme.xcolor4
 theme.collision_screen_bg_focus = theme.xcolor8
 theme.collision_screen_fg_focus = theme.xcolor4
 
-theme.notification_spacing = 10
+theme.notification_spacing = dpi(10)
 theme.notification_border_width = dpi(0)
-theme.notification_max_width = 600
+theme.notification_max_width = dpi(600)
 -- Tag Preview
 --
 theme.tag_preview_widget_border_radius = dpi(theme.border_radius)

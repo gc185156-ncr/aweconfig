@@ -45,10 +45,9 @@ end)
 require("configuration.keys")
 
 -- Get Rules
---
 require("configuration.ruled")
 
--- Layouts and Window Stuff
+-- Layouts, Titlebars, and other Window configs
 require("configuration.window")
 
 -- Scratchpad

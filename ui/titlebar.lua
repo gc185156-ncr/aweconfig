@@ -9,9 +9,9 @@ local helpers = require("helpers")
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
 
-  local close = gears.surface.load_uncached(
+  local close_button = gears.surface.load_uncached(
                       gfs.get_configuration_dir() .. "icons/titlebar/close.png")
-  local close_icon = gears.color.recolor_image(close, beautiful.xcolor6)
+  local close_icon = gears.color.recolor_image(close_button, beautiful.xcolor6)
   local remove = gears.surface.load_uncached(
                     gfs.get_configuration_dir() .. "icons/titlebar/remove.png")
   local min_icon = gears.color.recolor_image(remove, beautiful.xcolor8)
@@ -35,8 +35,6 @@ client.connect_signal("request::titlebars", function(c)
       widget = wibox.container.margin
     }
 
-    tb:connect_signal("mouse::enter", function() tb_icon.image = gears.color.recolor_image(img, color_focus) end)
-    tb:connect_signal("mouse::leave", function() tb_icon.image = gears.color.recolor_image(img, color_unfocus) end)
     tb.visible = true
     return tb
   end
