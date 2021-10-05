@@ -20,37 +20,25 @@ client.connect_signal("request::titlebars", function(c)
   local max_icon = gears.color.recolor_image(arrow, beautiful.xcolor3)
 
   local function create_title_button(c, color_focus, color_unfocus, img)
-    local tb = wibox.widget {
-      {
+
+     local tb_icon = {
         forced_width = dpi(16),
         forced_height = dpi(16),
         bg = color_focus,
         image = img,
         widget = wibox.widget.imagebox
-      },
+     }
+
+    local tb = wibox.widget {
+      tb_icon,
       top = dpi(4),
       widget = wibox.container.margin
     }
 
-    local function update()
-      if client.focus == c then
-        tb.image = gears.color.recolor_image(img, color_focus)
-      else
-        tb.image = gears.color.recolor_image(img, color_unfocus)
-        end
-    end
-    update()
-
-    c:connect_signal("focus", update)
-    c:connect_signal("unfocus", update)
-    tb:connect_signal("mouse::enter", function() tb.image = gears.color.recolor_image(img, color_focus) end)
-    tb:connect_signal("mouse::leave", function() tb.image = gears.color.recolor_image(img, color_unfocus) end)
+    tb:connect_signal("mouse::enter", function() tb_icon.image = gears.color.recolor_image(img, color_focus) end)
+    tb:connect_signal("mouse::leave", function() tb_icon.image = gears.color.recolor_image(img, color_unfocus) end)
     tb.visible = true
     return tb
-  end
-
-  local ci = function(width, height)
-    return function(cr) gears.shape.circle(cr, width, height) end
   end
 
   local close = create_title_button(c, beautiful.xcolor1,

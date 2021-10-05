@@ -1,9 +1,7 @@
 local awful = require("awful")
 local gears = require('gears')
-local gfs = gears.filesystem
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local naughty = require("naughty")
 local bling = require('module.bling')
 
 -- Set Autostart Applications
@@ -14,7 +12,7 @@ terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " start " .. editor
 browser = "firefox"
-filemanager = "alacritty -e ranger"
+filemanager = terminal .. "-e ranger"
 discord = "discord"
 music = terminal .. ' start --class music ncmpcpp'
 
@@ -27,8 +25,6 @@ modkey = "Mod4"
 altkey = "Mod1"
 shift = "Shift"
 ctrl = "Control"
-
-local yy = 10 + beautiful.wibar_height
 
 -- Bling Tab Preview
 bling.widget.tag_preview.enable {

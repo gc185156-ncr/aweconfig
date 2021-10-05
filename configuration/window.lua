@@ -15,7 +15,7 @@ local bling = require("module.bling")
 require("module.savefloats")
 
 -- Better mouse resizing on tiled
--- Not mine
+-- Nodt mine
 -- https://github.com/larkery/awesome/blob/master/better-resize.lua
 require("module.better-resize")
 
@@ -57,7 +57,7 @@ client.connect_signal("unfocus",
 
 tag.connect_signal("request::default_layouts", function()
     awful.layout.append_default_layouts({
-        awful.layout.suit.spiral.dwindle, awful.layout.suit.tile, awful.layout.suit.floating,
+        awful.layout.suit.tile, awful.layout.suit.floating,
     })
 end)
 
@@ -196,6 +196,7 @@ end)
 
 client.connect_signal('manage', function(c)
     setTitlebar(c, c.floating or c.first_tag.layout == awful.layout.suit.floating)
+    -- setTitlebar(c, c.first_tag.layout == awful.layout.suit.floating)
 end)
 
 -- Show titlebars on tags with the floating layout

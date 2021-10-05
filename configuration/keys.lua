@@ -303,17 +303,22 @@ awful.keyboard.append_global_keybindings({
 -- Mouse Bindings
 client.connect_signal("request::default_mousebindings", function()
     awful.mouse.append_client_mousebindings({
-        awful.button({}, 1, function(c)
-            c:activate{context = "mouse_click"}
-        end), awful.button({modkey}, 1, function(c)
-            c:activate{context = "mouse_click", action = "mouse_move"}
-        end), awful.button({modkey}, 3, function(c)
-            c:activate{context = "mouse_click", action = "mouse_resize"}
-        end), awful.button({}, 6, function() awful.spawn("mpc volume -3") end,
-                           {description = "lower music volume"}),
-        awful.button({}, 7, function() awful.spawn("mpc volume +3") end,
-                     {description = "raise music volume"})
+      awful.button({}, 1, function(c) c:activate{context = "mouse_click"}
+        end),
+      awful.button({modkey}, 1, function(c) c:activate{context = "mouse_click", action = "mouse_move"}
+        end),
+      awful.button({modkey}, 3, function(c) c:activate{context = "mouse_click", action = "mouse_resize"}
+        end),
+        awful.button({}, 7, function() awful.spawn("mpc volume -3") end),
+        awful.button({}, 6, function() awful.spawn("mpc volume +3") end)
     })
+end)
+
+client.connect_signal("request::default_mousebindings", function()
+  awful.mouse.append_global_mousebindings({
+    awful.button({}, 7, function() awful.spawn("mpc volume -3") end),
+    awful.button({}, 6, function() awful.spawn("mpc volume +3") end)
+  })
 end)
 
 -- EOF ------------------------------------------------------------------------
