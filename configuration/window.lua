@@ -182,9 +182,9 @@ local function setTitlebar(client, s)
 end
 
 -- Toggle titlebar on floating status change
--- client.connect_signal('property::floating', function(c)
---     setTitlebar(c, c.floating)
--- end)
+client.connect_signal('property::floating', function(c)
+    setTitlebar(c, c.floating)
+end)
 
 client.connect_signal('property::maximized', function(c)
     setTitlebar(c, not c.maximized)
@@ -195,7 +195,6 @@ client.connect_signal('property::fullscreen', function(c)
 end)
 
 client.connect_signal('manage', function(c)
-    -- setTitlebar(c, c.floating or c.first_tag.layout == awful.layout.suit.floating)
     setTitlebar(c, c.first_tag.layout == awful.layout.suit.floating)
 end)
 

@@ -1,15 +1,8 @@
 local awful = require("awful")
 local bling = require("module.bling")
 
-local function check_if_alive(cmd)
-    awful.spawn.easy_async_with_shell("pgrep -u $USER -x " .. cmd,
-                                      function(stdout, stderr, reason, exit_code)
-        if exit_code == 1 then awful.spawn(cmd) end
-    end)
-end
-
-local music_control = bling.module.scratchpad:new{
-    command = "alacritty --title music --class ncmpcpp,Scratchpad --command ncmpcpp",
+local music_control = bling.module.scratchpad {
+    command = "alacritty --title music --class ncmpcpp,Scratchpad",
     rule = {instance = "ncmpcpp"},
     sticky = true,
     autoclose = true,
@@ -21,7 +14,7 @@ local music_control = bling.module.scratchpad:new{
 
 awesome.connect_signal("scratch::music", function() music_control:toggle() end)
 
-local drop_term = bling.module.scratchpad:new{
+local drop_term = bling.module.scratchpad {
     command = "alacritty --title term --class drop_term,Scratchpad",
     rule = {instance = "drop_term"},
     sticky = true,
@@ -35,7 +28,7 @@ local drop_term = bling.module.scratchpad:new{
 awesome.connect_signal("scratch::term", function() drop_term:toggle() end)
 
 
-local launcher = bling.module.scratchpad:new{
+local launcher = bling.module.scratchpad {
     command = "alacritty --title launcher --class launcher,Scratchpad -e /home/gcc/.config/awesome/scripts/launcher.sh",
     rule = {instance = "launcher"},
     sticky = true,
@@ -49,7 +42,7 @@ local launcher = bling.module.scratchpad:new{
 awesome.connect_signal("scratch::launcher", function() launcher:toggle() end)
 
 
-local games = bling.module.scratchpad:new{
+local games = bling.module.scratchpad {
     command = "alacritty --title games --class games,Scratchpad -e /home/gcc/.config/awesome/scripts/games-launcher.sh",
     rule = {instance = "games"},
     sticky = true,

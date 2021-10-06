@@ -90,8 +90,12 @@ awful.keyboard.append_global_keybindings({
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({modkey, shift}, "d",
-              function() dashboard:toggle(mouse.screen) end,
-              {description = "show panel", group = "awesome"})
+      function() dashboard:toggle(mouse.screen) end,
+      {description = "show panel", group = "awesome"}),
+    
+    awful.key({modkey, shift}, "Escape",
+      function() awful.spawn("alacritty -e bpytop") end,
+      {description = "System Utils", group="system"})
 })
 
 -- Launcher and screen

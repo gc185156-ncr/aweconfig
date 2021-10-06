@@ -86,6 +86,7 @@ client.connect_signal("request::titlebars", function(c)
             },
             layout = wibox.layout.fixed.horizontal()
         },
+        bg = beautiful.xbackground,
         layout = wibox.layout.align.horizontal
     }
 end)

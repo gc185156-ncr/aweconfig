@@ -77,8 +77,8 @@ theme.fg_normal = theme.xcolor7
 theme.fg_focus = theme.xcolor4
 theme.fg_urgent = theme.xcolor3
 theme.fg_minimize = theme.xcolor8
-
 theme.button_close = theme.xcolor1
+
 
 -- Borders
 --
@@ -133,10 +133,10 @@ theme.tasklist_align = "center"
 
 -- Titlebars
 --
-theme.titlebar_size = dpi(30)
-theme.titlebar_height = dpi(20)
-theme.titlebar_bg_focus = theme.xbackground
-theme.titlebar_bg_normal = theme.xbackground
+-- theme.titlebar_size = dpi(30)
+-- theme.titlebar_height = dpi(20)
+-- theme.titlebar_bg_focus = theme.xbackground .. "FF"
+-- theme.titlebar_bg_normal = theme.xbackground
 theme.titlebar_fg_normal = theme.xcolor8
 theme.titlebar_fg_focus = theme.xcolor15 .. "55"
 
@@ -187,6 +187,7 @@ theme.layoutlist_bg_selected = theme.xcolor8
 theme.layoutlist_border_color = theme.xcolor8
 theme.layoutlist_border_width = theme.border_width
 theme.layoutlist_shape_selected = gears.shape.squircle
+
 -- Recolor Layout icons:
 theme = theme_assets.recolor_layout(theme, theme.xforeground)
 
@@ -247,9 +248,12 @@ theme.collision_screen_fg = theme.xcolor4
 theme.collision_screen_bg_focus = theme.xcolor8
 theme.collision_screen_fg_focus = theme.xcolor4
 
+-- Notifs
+--
 theme.notification_spacing = dpi(10)
 theme.notification_border_width = dpi(0)
-theme.notification_max_width = dpi(600)
+-- theme.notification_max_width = dpi(600)
+
 -- Tag Preview
 --
 theme.tag_preview_widget_border_radius = dpi(theme.border_radius)
