@@ -1,5 +1,26 @@
-local awful = require("awful")
 local bling = require("module.bling")
+local rubato = require("module.rubato")
+
+
+-- Anitmations
+local top_drawer = rubato.timed {
+  pos = -400,
+  rate = 144,
+  intro = .1,
+  easing = rubato.quadratic,
+  duration = .2,
+  awestore_compat = true
+}
+
+-- Anitmations
+local bottom_drawer = rubato.timed {
+  pos = 2000,
+  rate = 144,
+  intro = .1,
+  easing = rubato.quadratic,
+  duration = .2,
+  awestore_compat = true
+}
 
 local music_control = bling.module.scratchpad {
     command = "alacritty --title music --class ncmpcpp,Scratchpad",
@@ -10,6 +31,7 @@ local music_control = bling.module.scratchpad {
     geometry = {x = 500, y = 915, height = 500, width = 1600},
     reapply = true,
     dont_focus_before_close = false,
+    -- rubato = {y = bottom_drawer}
 }
 
 awesome.connect_signal("scratch::music", function() music_control:toggle() end)
@@ -20,9 +42,10 @@ local drop_term = bling.module.scratchpad {
     sticky = true,
     autoclose = true,
     floating = true,
-    geometry = {x = 20, y = 50, height = 600, width = 2520},
+    geometry = {x = 20, y = 40, height = 400, width = screen_width - 40},
     reapply = true,
     dont_focus_before_close = false,
+    -- rubato = {y = top_drawer}
 }
 
 awesome.connect_signal("scratch::term", function() drop_term:toggle() end)

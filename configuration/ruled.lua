@@ -30,19 +30,14 @@ ruled.client.connect_signal("request::rules", function()
         properties = {placement = awful.placement.centered}
     }
 
-        -- Borders
     ruled.client.append_rule {
-        id = "borders",
-        rule_any = {type = {"normal", "dialog"}},
-        except_any = {
-            class = {"Steam"},
-            role = {"Popup"},
-            type = {"splash"},
-            name = {"^discord.com is sharing your screen.$"}
-        },
-        properties = {
-            border_width = beautiful.border_width,
-            border_color = beautiful.border_normal
-        }
+      rule_any = { type =
+        { "normal", "dialog"}
+      },
+      except_any = {
+        class = {"Steam", "Scratchpad", "steam_app_570" --[[dota2]]},
+      },
+      properties = { titlebars_enabled = true }
     }
+
 end)

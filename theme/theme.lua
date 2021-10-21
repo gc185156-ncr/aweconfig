@@ -82,12 +82,12 @@ theme.button_close = theme.xcolor1
 
 -- Borders
 --
-theme.border_width = dpi(2)
-theme.oof_border_width = dpi(0)
-theme.border_normal = theme.xcolor0
+theme.border_width = dpi(0)
+theme.oof_border_width = dpi(2)
+theme.border_normal = theme.xbackground
 theme.border_focus = theme.xcolor0
-theme.border_radius = dpi(3)
-theme.client_radius = dpi(3)
+theme.border_radius = dpi(0)
+theme.client_radius = dpi(0)
 theme.widget_border_width = dpi(0)
 theme.widget_border_color = theme.xcolor0
 theme.notif_border_color = theme.xbackground
@@ -133,12 +133,12 @@ theme.tasklist_align = "center"
 
 -- Titlebars
 --
--- theme.titlebar_size = dpi(30)
--- theme.titlebar_height = dpi(20)
--- theme.titlebar_bg_focus = theme.xbackground .. "FF"
--- theme.titlebar_bg_normal = theme.xbackground
-theme.titlebar_fg_normal = theme.xcolor8
-theme.titlebar_fg_focus = theme.xcolor15 .. "55"
+theme.titlebar_size = dpi(3)
+theme.titlebar_height = dpi(3)
+theme.titlebar_bg_focus = theme.xcolor0
+theme.titlebar_bg_normal = theme.xbackground
+theme.titlebar_fg_normal = theme.xbackground
+theme.titlebar_fg_focus = theme.xcolor0
 
 -- Edge snap
 --
@@ -259,7 +259,7 @@ theme.notification_border_width = dpi(0)
 theme.tag_preview_widget_border_radius = dpi(theme.border_radius)
 theme.tag_preview_client_border_radius = dpi(theme.border_radius)
 theme.tag_preview_client_opacity = 0.5
-theme.tag_preview_client_bg = theme.xcolor0
+theme.tag_preview_client_bg = theme.xcolor0 .. "33"
 theme.tag_preview_client_border_color = theme.xcolor8
 theme.tag_preview_client_border_width = theme.widget_border_width
 theme.tag_preview_widget_bg = theme.xbackground

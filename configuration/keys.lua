@@ -106,7 +106,9 @@ awful.keyboard.append_global_keybindings({
               function() awesome.emit_signal("scratch::term") end, {
         description = "Toggle terminal scratchpad",
         group = "Scratchpad"
-    }), -- Show Music Controller
+    }),
+
+    -- Show Music Controller
     awful.key({modkey}, "p",
               function() awesome.emit_signal("scratch::music") end, {}),
 
@@ -167,23 +169,7 @@ awful.keyboard.append_global_keybindings({
     awful.key({modkey}, "h", function() awful.tag.incmwfact(-0.05) end,
               {description = "decrease master width factor", group = "layout"}),
 
-    awful.key({modkey, "Shift"}, "h",
-              function() awful.tag.incnmaster(1, nil, true) end, {
-        description = "increase the number of master clients",
-        group = "layout"
-    }), awful.key({modkey, "Shift"}, "l",
-                  function() awful.tag.incnmaster(-1, nil, true) end, {
-        description = "decrease the number of master clients",
-        group = "layout"
-    }), awful.key({modkey, "Control"}, "h",
-                  function() awful.tag.incncol(1, nil, true) end, {
-        description = "increase the number of columns",
-        group = "layout"
-    }), awful.key({modkey, "Control"}, "l",
-                  function() awful.tag.incncol(-1, nil, true) end, {
-        description = "decrease the number of columns",
-        group = "layout"
-    }), awful.key({modkey, "Shift"}, "n", function()
+    awful.key({modkey, "Shift"}, "n", function()
         local c = awful.client.restore()
         -- Focus restored client
         if c then
@@ -313,15 +299,15 @@ client.connect_signal("request::default_mousebindings", function()
         end),
       awful.button({modkey}, 3, function(c) c:activate{context = "mouse_click", action = "mouse_resize"}
         end),
-        awful.button({}, 7, function() awful.spawn("mpc volume -3") end),
-        awful.button({}, 6, function() awful.spawn("mpc volume +3") end)
+        awful.button({}, 7, function() awful.spawn("mpc volume +3") end),
+        awful.button({}, 6, function() awful.spawn("mpc volume -3") end)
     })
 end)
 
 client.connect_signal("request::default_mousebindings", function()
   awful.mouse.append_global_mousebindings({
-    awful.button({}, 7, function() awful.spawn("mpc volume -3") end),
-    awful.button({}, 6, function() awful.spawn("mpc volume +3") end)
+    awful.button({}, 7, function() awful.spawn("mpc volume +3") end),
+    awful.button({}, 6, function() awful.spawn("mpc volume -3") end)
   })
 end)
 

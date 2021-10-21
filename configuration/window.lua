@@ -29,16 +29,20 @@ client.connect_signal("request::manage", function(c)
         awful.placement.no_offscreen(c)
     end
 
-    -- Give ST and icon
-    if c.class == "st-256color" or c.class == "st-dialog" or c.class ==
-        "st-float" or c.instance == "st-256color" then
-        local new_icon = gears.surface(gfs.get_configuration_dir() ..
-                                           "icons/ghosts/terminal.png")
+    -- Custom icons
+    if c.class == "Alacritty" then
+        local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/terminal.png")
+        new_icon = gears.color.recolor_image(new_icon, beautiful.xforeground)
         c.icon = new_icon._native
-        --[[  elseif c.class == "discord" or c.instance == "discord" then
-        local new_icon = gears.surface(gfs.get_configuration_dir() ..
-                                           "icons/ghosts/discord.png")
-        c.icon = new_icon._native]] --
+    elseif c.class == "slack" or c.instance == "slack" then
+        local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/slack.png")
+        c.icon = new_icon._native
+    elseif c.clas == "mumble" or c.instance == "mumble" then
+        local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/mumble.png")
+        c.icon = new_icon._native 
+    elseif c.clas == "firefox" then
+        local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/firefox.png")
+        c.icon = new_icon._native
     end
 end)
 
@@ -61,6 +65,18 @@ tag.connect_signal("request::default_layouts", function()
     })
 end)
 
+-- Custom Layouts -------------------------------------------------------------
+
+local mstab = bling.layout.mstab
+local centered = bling.layout.centered
+local deck = bling.layout.deck
+
+-- Set the layouts
+awful.layout.layouts = {
+  awful.layout.suit.tile, awful.layout.suit.floating, centered, deck
+}
+-- end)
+
 -- Layout List Widget ---------------------------------------------------------
 
 -- List
@@ -69,7 +85,7 @@ local ll = awful.widget.layoutlist {
     spacing = dpi(24),
     base_layout = wibox.widget {
         spacing = dpi(24),
-        forced_num_cols = 2,
+        forced_num_cols = 5,
         layout = wibox.layout.grid.vertical
     },
     widget_template = {
@@ -165,51 +181,40 @@ end)
 
 -- Titlebar for floating windows ----------------------------------------------------
 -- Toggle titlebar on or off depending on s. Creates titlebar if it doesn't exist
-local function setTitlebar(client, s)
-    if s then
-        if client.titlebar == nil then
-            client:emit_signal('request::titlebars', 'rules', {})
-        end
-        awful.titlebar.show(client)
-    else
-        awful.titlebar.hide(client)
-    end
-
-    -- These clients should never have titlebars
-    if client.maximized or (client.class == "Scratchpad" or client.class == "Steam") then
-      awful.titlebar.hide(client)
-    end
-end
-
--- Toggle titlebar on floating status change
-client.connect_signal('property::floating', function(c)
-    setTitlebar(c, c.floating)
-end)
-
-client.connect_signal('property::maximized', function(c)
-    setTitlebar(c, not c.maximized)
-end)
-
-client.connect_signal('property::fullscreen', function(c)
-    setTitlebar(c, not c.fullscreen)
-end)
-
-client.connect_signal('manage', function(c)
-    setTitlebar(c, c.first_tag.layout == awful.layout.suit.floating)
-end)
-
--- Show titlebars on tags with the floating layout
-tag.connect_signal('property::layout', function(t)
--- New to Lua ?
--- pairs iterates on the table and return a key value pair
--- I don't need the key here, so I put _ to ignore it
-    for _, c in pairs(t:clients()) do
-        if t.layout == awful.layout.suit.floating then
-            setTitlebar(c, true)
-        else
-            setTitlebar(c, false)
-        end
-    end
-  end)
+-- local function setTitlebar(client, s)
+--     if s then
+--          if client.titlebar == nil then
+--              client:emit_signal('request::titlebars', 'rules', {})
+--          end
+--          awful.titlebar.show(client)
+--      else
+--          awful.titlebar.hide(client)
+--      end
+--
+--      -- These clients should never have titlebars
+--      awful.titlebar.hide(client)
+--  end
+--
+-- client.connect_signal('property::fullscreen', function(c)
+--   setTitlebar(c, not c.fullscreen)
+-- end)
+--
+-- client.connect_signal('manage', function(c)
+--     setTitlebar(c, c.first_tag.layout == awful.layout.suit.floating)
+-- end)
+--
+-- -- Show titlebars on tags with the floating layout
+-- tag.connect_signal('property::layout', function(t)
+-- -- New to Lua ?
+-- -- pairs iterates on the table and return a key value pair
+-- -- I don't need the key here, so I put _ to ignore it
+--     for _, c in pairs(t:clients()) do
+--         if t.layout == awful.layout.suit.floating then
+--             setTitlebar(c, true)
+--         else
+--             setTitlebar(c, false)
+--         end
+--     end
+--   end)
 
 -- EOF ------------------------------------------------------------------------

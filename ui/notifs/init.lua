@@ -112,6 +112,8 @@ naughty.connect_signal("request::display", function(n)
                                         height = dpi(20),
                                         widget = wibox.container.constraint
                                     },
+                                    top = dpi(5),
+                                    bottom = dpi(5),
                                     right = dpi(10),
                                     widget = wibox.container.margin
                                 },

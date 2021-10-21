@@ -95,7 +95,7 @@ local final_systray = wibox.widget {
         right = dpi(4),
         layout = wibox.container.margin
     },
-    bg = beautiful.xcolor0,
+    bg = beautiful.bg_systray,
     -- shape = helpers.rrect(beautiful.border_radius),
     widget = wibox.container.background
 }
