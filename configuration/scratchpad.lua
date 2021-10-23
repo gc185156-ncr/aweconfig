@@ -31,7 +31,7 @@ local music_control = bling.module.scratchpad {
     geometry = {x = 500, y = 915, height = 500, width = 1600},
     reapply = true,
     dont_focus_before_close = false,
-    -- rubato = {y = bottom_drawer}
+    rubato = {y = bottom_drawer}
 }
 
 awesome.connect_signal("scratch::music", function() music_control:toggle() end)
@@ -45,7 +45,7 @@ local drop_term = bling.module.scratchpad {
     geometry = {x = 20, y = 40, height = 400, width = screen_width - 40},
     reapply = true,
     dont_focus_before_close = false,
-    -- rubato = {y = top_drawer}
+    rubato = {y = top_drawer}
 }
 
 awesome.connect_signal("scratch::term", function() drop_term:toggle() end)

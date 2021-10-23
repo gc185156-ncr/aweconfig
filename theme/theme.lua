@@ -205,7 +205,7 @@ theme.exit_screen_bg = theme.xcolor0 .. "70"
 theme.wibar_height = dpi(32) + theme.widget_border_width
 theme.wibar_margin = dpi(6)
 theme.wibar_spacing = dpi(6)
-theme.wibar_bg = theme.xbackground
+theme.wibar_bg = theme.xbackground .. "DA"
 
 -- Systray
 --

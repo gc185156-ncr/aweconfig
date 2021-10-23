@@ -5,6 +5,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = require("beautiful.xresources").apply_dpi
 local helpers = require("helpers")
+require("awful.autofocus")
 
 -- Bling Module
 local bling = require("module.bling")
@@ -48,7 +49,7 @@ end)
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+    c:emit_signal("request::activate", "mouse_enter", {raise = true})
 end)
 
 client.connect_signal("focus",
@@ -56,14 +57,6 @@ client.connect_signal("focus",
 
 client.connect_signal("unfocus",
                       function(c) c.border_color = beautiful.border_normal end)
-
--- Set the layouts
-
-tag.connect_signal("request::default_layouts", function()
-    awful.layout.append_default_layouts({
-        awful.layout.suit.tile, awful.layout.suit.floating,
-    })
-end)
 
 -- Custom Layouts -------------------------------------------------------------
 
