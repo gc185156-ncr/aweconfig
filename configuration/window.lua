@@ -45,9 +45,9 @@ client.connect_signal("request::manage", function(c)
   elseif c.class == "firefox" then
     local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/firefox.png")
     c.icon = new_icon._native
-  -- elseif c.class == "discord" then
-    -- local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/discord.png")
-    -- c.icon = new_icon._native
+  elseif c.class == "dota2" then
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/dota2.png")
+    c.icon = new_icon._native
   elseif c.class == "Steam" or c.instance == "steam" then
     local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/steam.png")
     c.icon = new_icon._native

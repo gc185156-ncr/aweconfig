@@ -34,7 +34,7 @@ ruled.client.connect_signal("request::rules", function()
       class = {
         "Steam",
         "Scratchpad",
-        "steam_app_570", --[[dota2]]
+        "dota2", --[[dota2]]
       },
     },
     properties = { titlebars_enabled = true },

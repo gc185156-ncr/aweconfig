@@ -155,23 +155,24 @@ screen.connect_signal("request::desktop_decoration", function(s)
     widget_template = {
       {
         {
-          awful.widget.clienticon,
-          forced_width = dpi(20),
-          forced_height = dpi(19),
-          widget = wibox.container.constraint,
+          {
+            awful.widget.clienticon,
+            forced_width = dpi(20),
+            forced_height = dpi(19),
+            widget = wibox.container.constraint,
+          },
+          top = dpi(2),
+          bottom = dpi(2),
+          widget = wibox.container.margin,
         },
         {
-          {
-            id = "indicator",
-            forced_width = dpi(10),
-            forced_height = dpi(1),
-            visible = false,
-            bg = beautiful.xcolor8,
-            shape = gears.shape.rectangle,
-            widget = wibox.container.background,
-          },
-          top = dpi(4),
-          widget = wibox.container.margin
+          id = "indicator",
+          forced_width = dpi(10),
+          forced_height = dpi(1),
+          visible = false,
+          bg = beautiful.xcolor8,
+          shape = gears.shape.rectangle,
+          widget = wibox.container.background,
         },
         layout = wibox.layout.align.vertical,
       },
@@ -204,7 +205,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
         {
           layout = wibox.layout.fixed.horizontal,
           s.mytaglist,
-          sep,
         },
         {
           wrap_widget(s.mytasklist),
