@@ -1,5 +1,5 @@
---  _   _                         
--- | |_| |__   ___ _ __ ___   ___ 
+--  _   _
+-- | |_| |__   ___ _ __ ___   ___
 -- | __| '_ \ / _ \ '_ ` _ \ / _ \
 -- | |_| | | |  __/ | | | | |  __/
 --  \__|_| |_|\___|_| |_| |_|\___|
@@ -15,7 +15,7 @@ local helpers = require("helpers")
 -- Inherit default theme
 --
 local theme = dofile(themes_path .. "default/theme.lua")
-theme.wallpaper = gfs.get_configuration_dir() .. "images/bg.png"
+theme.wallpaper = gfs.get_configuration_dir() .. "images/bg3.png"
 
 -- Titlebar icon path
 --
@@ -23,8 +23,7 @@ local icon_path = gfs.get_configuration_dir() .. "icons/"
 
 -- PFP
 --
-theme.me = gears.surface.load_uncached(gfs.get_configuration_dir() ..
-                                           "images/me.png")
+theme.me = gears.surface.load_uncached(gfs.get_configuration_dir() .. "images/me.png")
 
 -- Icons for Notif Center
 --
@@ -79,10 +78,9 @@ theme.fg_urgent = theme.xcolor3
 theme.fg_minimize = theme.xcolor8
 theme.button_close = theme.xcolor1
 
-
 -- Borders
 --
-theme.border_width = dpi(0)
+theme.border_width = dpi(1)
 theme.oof_border_width = dpi(2)
 theme.border_normal = theme.xbackground
 theme.border_focus = theme.xcolor0
@@ -96,10 +94,8 @@ theme.notif_border_color = theme.xbackground
 --
 -- Generate taglist squares:
 local taglist_square_size = dpi(0)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-                                taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-                                  taglist_square_size, theme.fg_normal)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
 theme.taglist_font = theme.font_taglist
 theme.taglist_bg = theme.wibar_bg
 theme.taglist_bg_focus = theme.xcolor0
@@ -119,16 +115,10 @@ theme.taglist_disable_icon = true
 --
 theme.tasklist_font = theme.font
 theme.tasklist_plain_task_name = true
-theme.tasklist_bg_focus = theme.xbackground .. "00"
-theme.tasklist_fg_focus = theme.xcolor6
+theme.tasklist_bg_focus = theme.wibar_bg
 theme.tasklist_bg_minimize = theme.xbackground .. "00"
-theme.tasklist_fg_minimize = theme.xforeground .. "70"
-theme.tasklist_bg_normal = theme.xbackground
-theme.tasklist_fg_normal = theme.xforeground
-theme.tasklist_disable_task_name = false
-theme.tasklist_disable_icon = true
+theme.tasklist_bg_normal = theme.xbackground .. "00"
 theme.tasklist_bg_urgent = theme.xcolor1
-theme.tasklist_fg_urgent = theme.xforeground
 theme.tasklist_align = "center"
 
 -- Titlebars
@@ -167,8 +157,7 @@ theme.menu_bg_focus = theme.xcolor4
 theme.menu_fg_focus = theme.xcolor7
 theme.menu_bg_normal = theme.xbackground
 theme.menu_fg_normal = theme.xcolor7
-theme.menu_submenu_icon = gears.filesystem.get_configuration_dir() ..
-                              "theme/icons/submenu.png"
+theme.menu_submenu_icon = gears.filesystem.get_configuration_dir() .. "theme/icons/submenu.png"
 theme.menu_height = dpi(20)
 theme.menu_width = dpi(130)
 theme.menu_border_color = "#0000000"
@@ -189,10 +178,9 @@ theme.layoutlist_border_width = theme.border_width
 theme.layoutlist_shape_selected = gears.shape.squircle
 
 -- Recolor Layout icons:
-theme = theme_assets.recolor_layout(theme, theme.xforeground)
+theme = theme_assets.recolor_layout(theme, theme.xcolor8)
 
 -- Gaps
---
 theme.useless_gap = dpi(10)
 
 -- Exit Screen
