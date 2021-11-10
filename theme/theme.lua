@@ -115,7 +115,7 @@ theme.taglist_disable_icon = true
 --
 theme.tasklist_font = theme.font
 theme.tasklist_plain_task_name = true
-theme.tasklist_bg_focus = theme.wibar_bg
+theme.tasklist_bg_focus = theme.xbackground .. "00"
 theme.tasklist_bg_minimize = theme.xbackground .. "00"
 theme.tasklist_bg_normal = theme.xbackground .. "00"
 theme.tasklist_bg_urgent = theme.xcolor1

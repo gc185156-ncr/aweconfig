@@ -154,19 +154,35 @@ screen.connect_signal("request::desktop_decoration", function(s)
     layout = { spacing = dpi(8), layout = wibox.layout.fixed.horizontal },
     widget_template = {
       {
-        awful.widget.clienticon,
-        margins = dpi(3),
-        layout = wibox.container.margin,
+        {
+          awful.widget.clienticon,
+          forced_width = dpi(20),
+          forced_height = dpi(19),
+          widget = wibox.container.constraint,
+        },
+        {
+          {
+            id = "indicator",
+            forced_width = dpi(10),
+            forced_height = dpi(1),
+            visible = false,
+            bg = beautiful.xcolor8,
+            shape = gears.shape.rectangle,
+            widget = wibox.container.background,
+          },
+          top = dpi(4),
+          widget = wibox.container.margin
+        },
+        layout = wibox.layout.align.vertical,
       },
       id = "background_role",
       widget = wibox.container.background,
       create_callback = function(self, c, index, clients)
-        c:connect_signal("focus", function ()
-          self.border_color = beautiful.xcolor8
-          self.border_width = dpi(3)
+        c:connect_signal("focus", function()
+          self:get_children_by_id("indicator")[1].visible = true
         end)
-        c:connect_signal("unfocus", function ()
-          self.border_width = dpi(0)
+        c:connect_signal("unfocus", function()
+          self:get_children_by_id("indicator")[1].visible = false
         end)
         self:connect_signal("mouse::enter", function()
           awesome.emit_signal("bling::task_preview::visibility", s, true, c)
