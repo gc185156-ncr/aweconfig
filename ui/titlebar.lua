@@ -7,65 +7,38 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local helpers = require("helpers")
 
-local function create_title_button(c, color_focus, color_unfocus, img)
-  local tb_icon = {
-    forced_width = dpi(16),
-    forced_height = dpi(16),
-    bg = color_focus,
-    image = img,
-    widget = wibox.widget.imagebox,
-  }
-  local tb = wibox.widget({
-    tb_icon,
-    top = dpi(4),
-    widget = wibox.container.margin,
-  })
-  tb.visible = true
-  local function update()
-    if client.focus == c then
-      tb.bg = color_focus
-    else
-      tb.bg = color_unfocus
-    end
-  end
-  update()
-
-  c:connect_signal("focus", update)
-  c:connect_signal("unfocus", update)
-  tb:connect_signal("mouse::enter", function()
-    tb.bg = color_focus .. 55
-  end)
-  tb:connect_signal("mouse::leave", function()
-    tb.bg = color_focus
-  end)
-
-  tb.visible = true
-  return tb
-end
-
 -- Add a `titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
-  local function create_title_button(c, color_focus, color_unfocus, img)
-    local tb_icon = {
-      forced_width = dpi(16),
-      forced_height = dpi(16),
-      bg = color_focus,
-      image = img,
-      widget = wibox.widget.imagebox,
-    }
-
+  local function create_title_button(color_focus, img)
     local tb = wibox.widget({
-      tb_icon,
-      top = dpi(4),
-      widget = wibox.container.margin,
+      {
+        {
+          image = img,
+          forced_width = dpi(10),
+          forced_height = dpi(10),
+          widget = wibox.widget.imagebox,
+        },
+        margins = dpi(5),
+        widget = wibox.container.margin
+      },
+      forced_width = dpi(20),
+      widget = wibox.container.background,
     })
+
+    tb:connect_signal("mouse::enter", function()
+      tb.bg = color_focus .. 55
+    end)
+    tb:connect_signal("mouse::leave", function()
+      tb.bg = beautiful.xbackground .. "00"
+    end)
+
     tb.visible = true
     return tb
   end
 
   local close_button = gears.surface.load_uncached(gfs.get_configuration_dir() .. "icons/titlebar/close.png")
-  local close_icon = gears.color.recolor_image(close_button, "#EC6B64")
-  local close = create_title_button(c, "#EC6B6499", beautiful.xcolor0 .. "55", close_icon)
+  local close_icon = gears.color.recolor_image(close_button, beautiful.xcolor9)
+  local close = create_title_button(beautiful.xcolor8, close_icon)
   close:connect_signal("button::press", function()
     c:kill()
   end)
@@ -90,7 +63,7 @@ client.connect_signal("request::titlebars", function(c)
 
   awful.titlebar(c):setup({
     {
-      helpers.horizontal_pad(6),
+      helpers.horizontal_pad(4),
       {
         awful.titlebar.widget.iconwidget(c),
         top = dpi(2),
@@ -100,22 +73,12 @@ client.connect_signal("request::titlebars", function(c)
       buttons = buttons,
       layout = wibox.layout.fixed.horizontal,
     },
-    { -- Title
-      -- {
-      --   align  = "center",
-      --   widget = awful.titlebar.widget.titlewidget(c),
-      -- },
+    {
       buttons = buttons,
       layout = wibox.layout.flex.horizontal,
     },
     {
-      {
-        close,
-        helpers.horizontal_pad(6),
-        top = dpi(2),
-        bottom = dpi(5),
-        widget = wibox.container.margin,
-      },
+      close,
       layout = wibox.layout.fixed.horizontal,
     },
     layout = wibox.layout.align.horizontal,

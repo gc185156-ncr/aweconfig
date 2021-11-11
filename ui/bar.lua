@@ -157,12 +157,12 @@ screen.connect_signal("request::desktop_decoration", function(s)
         {
           {
             awful.widget.clienticon,
-            forced_width = dpi(20),
-            forced_height = dpi(19),
+            forced_width = dpi(17),
+            forced_height = dpi(17),
             widget = wibox.container.constraint,
           },
-          top = dpi(2),
-          bottom = dpi(2),
+          top = dpi(3),
+          bottom = dpi(3),
           widget = wibox.container.margin,
         },
         {
@@ -174,7 +174,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
           shape = gears.shape.rectangle,
           widget = wibox.container.background,
         },
-        layout = wibox.layout.align.vertical,
+        layout = wibox.layout.fixed.vertical,
       },
       id = "background_role",
       widget = wibox.container.background,
