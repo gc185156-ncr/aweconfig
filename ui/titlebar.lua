@@ -36,7 +36,7 @@ client.connect_signal("request::titlebars", function(c)
     return tb
   end
 
-  local close_button = gears.surface.load_uncached(gfs.get_configuration_dir() .. "icons/titlebar/close.png")
+  local close_button = beautiful.icon_path .. "close.png"
   local close_icon = gears.color.recolor_image(close_button, beautiful.xcolor9)
   local close = create_title_button(beautiful.xcolor8, close_icon)
   close:connect_signal("button::press", function()

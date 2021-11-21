@@ -17,21 +17,14 @@ local helpers = require("helpers")
 local theme = dofile(themes_path .. "default/theme.lua")
 theme.wallpaper = gfs.get_configuration_dir() .. "images/bg3.png"
 
--- Titlebar icon path
---
+-- Icon Path
 local icon_path = gfs.get_configuration_dir() .. "icons/"
+theme.notification_icon = icon_path .. "notification.png"
 
 -- PFP
 --
 theme.me = gears.surface.load_uncached(gfs.get_configuration_dir() .. "images/me.png")
 
--- Icons for Notif Center
---
-theme.clear_icon = icon_path .. "notif-center/clear.png"
-theme.clear_grey_icon = icon_path .. "notif-center/clear_grey.png"
-theme.notification_icon = icon_path .. "notif-center/notification.png"
-theme.delete_icon = icon_path .. "notif-center/delete.png"
-theme.delete_grey_icon = icon_path .. "notif-center/delete_grey.png"
 
 -- Load ~/.Xresources colors and set fallback colors
 --
