@@ -240,7 +240,6 @@ theme.collision_screen_fg_focus = theme.xcolor4
 --
 theme.notification_spacing = dpi(10)
 theme.notification_border_width = dpi(0)
--- theme.notification_max_width = dpi(600)
 
 -- Tag Preview
 --
@@ -259,11 +258,15 @@ theme.fade_duration = 250
 
 -- Window Switcher
 theme.window_switcher_widget_bg = theme.xbackground
-theme.window_switcher_widget_border_width = dpi(0)
+theme.window_switcher_name_font = theme.font_name .. "12"
+theme.window_switcher_widget_border_width = dpi(1)
+theme.window_switcher_widget_border_color = theme.xcolor0    -- The border color of the widget
 theme.window_switcher_name_normal_color = theme.xforeground
 theme.window_switcher_name_focus_color = theme.xcolor14
-theme.window_switcher_icon_width = dpi(0)
+theme.window_switcher_icon_width = dpi(30)
 
+-- theme.window_switcher_client_icon_vertical_spacing = dpi(0)
+-- theme.window_switcher_client_margins = dpi(0)
 -- Seperator
 theme.seperator = "::"
 

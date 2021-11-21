@@ -5,7 +5,6 @@ pcall(require, "luarocks.loader")
 
 -- Standard awesome library
 local gfs = require("gears.filesystem")
-local awful = require("awful")
 
 -- Theme handling library
 local beautiful = require("beautiful")

@@ -25,7 +25,7 @@ altkey = "Mod1"
 shift = "Shift"
 ctrl = "Control"
 
--- Bling Tab Preview
+-- Enable Bling Modules
 bling.widget.tag_preview.enable({
   show_client_content = true,
   x = dpi(10),
@@ -35,35 +35,18 @@ bling.widget.tag_preview.enable({
   honor_workarea = false,
 })
 
--- Bling Task Preview
--- bling.widget.task_preview.enable {
---     x = 20,                    -- The x-coord of the popup
---     y = 20,                    -- The y-coord of the popup
---     height = 200,              -- The height of the popup
---     width = 200,               -- The width of the popup
---     placement_fn = function(c) -- Place the widget using awful.placement (this overrides x & y)
---         awful.placement.top(c, {
---             margins = {
---                 top = 30
---             }
---         })
---     end
--- }
-
--- Bling Winow Switcher
-bling.widget.window_switcher.enable({
-  type = "thumbnail", -- set to anything other than "thumbnail" to disable client previews
-  -- keybindings (the examples provided are also the default if kept unset)
-  hide_window_switcher_key = "Escape", -- The key on which to close the popup
-  minimize_key = "n", -- The key on which to minimize the selected client
-  unminimize_key = "N", -- The key on which to unminimize all clients
-  kill_client_key = "q", -- The key on which to close the selected client
-  cycle_key = "Tab", -- The key on which to cycle through all clients
-  previous_key = "Left", -- The key on which to select the previous client
-  next_key = "Right", -- The key on which to select the next client
-  vim_previous_key = "h", -- Alternative key on which to select the previous client
-  vim_next_key = "l", -- Alternative key on which to select the next client
-})
+bling.widget.window_switcher.enable {
+    type = "none", -- set to anything other than "thumbnail" to disable client previews
+    hide_window_switcher_key = "Escape", -- The key on which to close the popup
+    minimize_key = "n",                  -- The key on which to minimize the selected client
+    unminimize_key = "N",                -- The key on which to unminimize all clients
+    kill_client_key = "q",               -- The key on which to close the selected client
+    cycle_key = "Tab",                   -- The key on which to cycle through all clients
+    previous_key = "Left",               -- The key on which to select the previous client
+    next_key = "Right",                  -- The key on which to select the next client
+    vim_previous_key = "j",              -- Alternative key on which to select the previous client
+    vim_next_key = "k",                  -- Alternative key on which to select the next client
+}
 
 screen.connect_signal("request::desktop_decoration", function(s)
   -- Screen padding

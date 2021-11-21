@@ -23,7 +23,8 @@ autostart_apps = {
   -- Remap Capslock
   "setxkbmap -option caps:escape",
   -- Compositor
-  "pkill picom && picom -b --experimental-backends --config ~/.config/picom/picom.conf",
+  "picom -b --experimental-backends --config ~/.config/picom/picom.conf",
+
   -- MPD
   "[ ! -s ~/.config/mpd/pid ] && mpd ~/.config/mpd/mpd.conf",
   -- MPDAS
