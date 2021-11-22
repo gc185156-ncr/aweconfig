@@ -8,14 +8,6 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local helpers = require("helpers")
 
--- Seperator -----------------------------------------------------------------
-
-local sep = wibox.widget({
-  { color = beautiful.xcolor8, text = "::", widget = wibox.widget.textbox },
-  bottom = dpi(3),
-  widget = wibox.container.margin,
-})
-
 -- Time Widget ----------------------------------------------------------------
 
 local time_text = wibox.widget({
