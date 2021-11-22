@@ -34,33 +34,28 @@ function dashboard:toggle(screen)
 end
 
 dashboard:setup({
-  layout = wibox.layout.align.vertical,
-  nil,
+  {
+    text = "gcc",
+    font = beautiful.font,
+    widget = wibox.widget.textbox,
+  },
   {
     {
-      nil,
-      {
-        {
-          image = gears.surface(gears.filesystem.get_configuration_dir() .. "images/me.png"),
-          resize = true,
-          widget = wibox.widget.imagebox,
-        },
-        height = w / 2,
-        width = w / 2,
-        widget = wibox.container.constraint,
-      },
-    shape = gears.shape.squircle,
-    layout = wibox.layout.align.horizonal,
-    widget = wibox.container.background,
+      image = gears.surface(gears.filesystem.get_configuration_dir() .. "images/me.png"),
+      resize = true,
+      clip_shape = gears.shape.squircle,
+      widget = wibox.widget.imagebox,
     },
-
-    cpu,
-    ram,
-    temp,
-    root,
-    data,
-    layout = wibox.layout.fixed.vertical,
+    height = w / 2,
+    width = w / 2,
+    widget = wibox.container.constraint,
   },
+  cpu,
+  ram,
+  temp,
+  root,
+  data,
+  layout = wibox.layout.fixed.vertical,
 })
 
 return dashboard
