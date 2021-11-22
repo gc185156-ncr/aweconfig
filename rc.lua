@@ -27,7 +27,7 @@ naughty.connect_signal("request::display_error", function(message, startup)
     }
 end)
 
-beautiful.init(gfs.get_configuration_dir() .. "theme/theme.lua")
+beautiful.init(gfs.get_configuration_dir() .. "theme.lua")
 
 -- Import Configuration
 require("configuration")

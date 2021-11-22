@@ -22,7 +22,7 @@ local bottom_drawer = rubato.timed({
 })
 
 local music_control = bling.module.scratchpad({
-  command = "alacritty --title music --class ncmpcpp,Scratchpad",
+  command = "alacritty --title music --class ncmpcpp,Scratchpad --command 'ncmpcpp'",
   rule = { instance = "ncmpcpp" },
   sticky = true,
   autoclose = true,

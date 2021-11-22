@@ -1,3 +1,6 @@
 require("signals.ram")
 require("signals.cpu")
-require("signals.disk")
+require("signals.root")
+require("signals.data")
+require("signals.temp")
+

@@ -31,28 +31,28 @@ client.connect_signal("request::manage", function(c)
 
   -- Custom icons --------------------------------------------------------------
   if c.class == "Alacritty" then
-    local new_icon = beautiful.icon_path .. "term.png"
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/term.png")
     c.icon = new_icon._native  c.icon = new_icon._native
   elseif c.class == "Scratchpad" then
-    local new_icon = beautiful.icon_path .. "term.png"
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/term.png")
     c.icon = new_icon._native  c.icon = new_icon._native
   elseif c.class == "slack" or c.instance == "slack" then
-    local new_icon = beautiful.icon_path .. "slack.png"
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/slack.png")
     c.icon = new_icon._native
   elseif c.class == "mumble" or c.instance == "mumble" then
-    local new_icon = beautiful.icon_path .. "mumble.png"
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/mumble.png")
     c.icon = new_icon._native
   elseif c.class == "firefox" then
-    local new_icon = beautiful.icon_path .. "firefox.png"
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/firefox.png")
     c.icon = new_icon._native
   elseif c.class == "dota2" then
-    local new_icon = beautiful.icon_path .. "dota2.png"
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/dota2.png")
     c.icon = new_icon._native
   elseif c.class == "Zathura" then
-    local new_icon = beautiful.icon_path .. "pdf.png"
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/pdf.png")
     c.icon = new_icon._native
   elseif c.class == "Steam" or c.instance == "steam" then
-    local new_icon = beautiful.icon_path .. "steam.png"
+    local new_icon = gears.surface(gfs.get_configuration_dir() .. "icons/steam.png")
     c.icon = new_icon._native
   end
 end)
