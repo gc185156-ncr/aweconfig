@@ -6,7 +6,7 @@ local temp_bar = wibox.widget({
   max_value = 100,
   value = 0,
   forced_height = dpi(3),
-  margins = dpi(6),
+  margins = dpi(8),
   color = beautiful.xcolor9,
   background_color = beautiful.xcolor0,
   widget = wibox.widget.progressbar,
@@ -14,7 +14,7 @@ local temp_bar = wibox.widget({
 
 local temp_text = wibox.widget({
   text = "TEMP",
-  font = beautiful.font,
+  font = beautiful.font_name .. "14",
   color = beautiful.xforeground,
   align = "center",
   widget = wibox.widget.textbox,

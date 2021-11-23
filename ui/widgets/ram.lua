@@ -6,7 +6,7 @@ local ram_bar = wibox.widget({
   max_value = 100,
   value = 0,
   forced_height = dpi(3),
-  margins = dpi(6),
+  margins = dpi(8),
   color = beautiful.xcolor3,
   background_color = beautiful.xcolor0,
   widget = wibox.widget.progressbar,
@@ -14,7 +14,7 @@ local ram_bar = wibox.widget({
 
 local ram_text = wibox.widget({
   text = "RAM",
-  font = beautiful.font,
+  font = beautiful.font_name .. "14",
   color = beautiful.xforeground,
   align = "center",
   widget = wibox.widget.textbox,

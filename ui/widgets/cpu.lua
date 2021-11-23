@@ -5,7 +5,7 @@ local dpi = beautiful.xresources.apply_dpi
 local cpu_bar = wibox.widget({
   max_value = 100,
   value = 0,
-  margins = dpi(6),
+  margins = dpi(8),
   forced_height = dpi(3),
   forced_width = w,
   color = beautiful.xcolor5,
@@ -15,7 +15,7 @@ local cpu_bar = wibox.widget({
 
 local cpu_text = wibox.widget({
   text = "CPU",
-  font = beautiful.font,
+  font = beautiful.font_name .. "14",
   color = beautiful.xforeground,
   align = "center",
   widget = wibox.widget.textbox,

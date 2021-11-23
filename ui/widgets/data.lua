@@ -4,7 +4,7 @@ local dpi = beautiful.xresources.apply_dpi
 
 local disk_bar = wibox.widget({
   max_value = 100,
-  margins = dpi(6),
+  margins = dpi(8),
   forced_height = dpi(3),
   color = beautiful.xcolor12,
   background_color = beautiful.xcolor0,
@@ -13,7 +13,7 @@ local disk_bar = wibox.widget({
 
 local disk_text = wibox.widget({
   text = "DATA",
-  font = beautiful.font,
+  font = beautiful.font_name .. "14",
   color = beautiful.xforeground,
   align = "center",
   widget = wibox.widget.textbox,
