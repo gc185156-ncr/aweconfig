@@ -22,13 +22,14 @@ local temp_text = wibox.widget({
 
 awesome.connect_signal("signal::temp", function(value)
   temp_bar.value = value
+  temp_text.text = "TEMP - " .. value .. "C°"
 end)
 
 return wibox.widget({
   {
-    temp_bar,
     temp_text,
-    layout = wibox.layout.stack,
+    temp_bar,
+    layout = wibox.layout.align.vertical,
   },
   margins = dpi(10),
   widget = wibox.container.margin

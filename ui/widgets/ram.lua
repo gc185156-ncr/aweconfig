@@ -22,14 +22,15 @@ local ram_text = wibox.widget({
 
 awesome.connect_signal("signal::ram", function(used, total)
   local used_ram_percentage = (used / total) * 100
+  ram_text.text = "RAM - " .. used .. "/" .. total
   ram_bar.value = used_ram_percentage
 end)
 
 return wibox.widget({
   {
-    ram_bar,
     ram_text,
-    layout = wibox.layout.stack,
+    ram_bar,
+    layout = wibox.layout.align.vertical,
   },
   margins = dpi(10),
   widget = wibox.container.margin,

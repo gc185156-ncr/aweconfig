@@ -12,7 +12,7 @@ local disk_bar = wibox.widget({
 })
 
 local disk_text = wibox.widget({
-  text = "DATA",
+  text = "",
   font = beautiful.font_name .. "14",
   color = beautiful.xforeground,
   align = "center",
@@ -21,13 +21,14 @@ local disk_text = wibox.widget({
 
 awesome.connect_signal("signal::data_disk", function(used, total)
   disk_bar.value = tonumber(100 * used / total)
+  disk_text.text = "data - " .. tonumber(total - used) .. "GiG"
 end)
 
 return wibox.widget({
   {
-    disk_bar,
     disk_text,
-    layout = wibox.layout.stack,
+    disk_bar,
+    layout = wibox.layout.align.vertical,
   },
   margins = dpi(10),
   widget = wibox.container.margin,

@@ -26,20 +26,18 @@ env-entry() {
 cat <<EOF
 GAME_ID="$1"
 GAME_NAME="$2"
-GAME_ICON="$3"
 EOF
 }
 
+rm -rf $APP_PATH
 mkdir -p "$APP_PATH"
+
 for library in $(steam-libraries); do
     # All installed Steam games correspond with an appmanifest_<appid>.acf file
     for manifest in "$library"/steamapps/appmanifest_*.acf; do
         appid=$(basename "$manifest" | tr -dc "[0-9]")
         title=$(awk -F\" '/"name"/ {print $4}' "$manifest" | tr -d "™®")
         entry=$APP_PATH/${title}.env
-        # TODO Investigate using ueberzug to dispaly boxart
-        hoxart=$STEAM_ROOT/appcache/librarycache/${appid}_library_600x900.jpg
-        # Filter out non-game entries (e.g. Proton versions or soundtracks) by
         # checking for boxart and other criteria
         if echo "$title" | grep -qe "Soundtrack"; then
             continue
@@ -56,11 +54,11 @@ for library in $(steam-libraries); do
 
         # Uncomment for verbose generation
         # echo -e "Generating $entry\t($title)"
-        env-entry "$appid" "$title" "$boxart"> "$entry"
+        env-entry "$appid" "$title" > "$entry"
     done
 done
 
-cd ~/.local/share/applications/steam && eval $(cat "$(ls -1 | sed -e 's/\.env$//' | fzf --border --color fg:#ebdbb2,bg:#1d2021,hl:#d79921,fg+:#689d6a,bg+:#282828,hl+:#fabd2f,info:#83a598,prompt:#bdae93,spinner:#b16286,pointer:#689d6a,marker:#fe8019,header:#665c54).env")
+cd $APP_PATH && eval $(cat "$(ls -1 | sed -e 's/\.env$//' | fzf --border --color fg:#ebdbb2,bg:#1d2021,hl:#d79921,fg+:#689d6a,bg+:#282828,hl+:#fabd2f,info:#83a598,prompt:#bdae93,spinner:#b16286,pointer:#689d6a,marker:#fe8019,header:#665c54).env")
 
 steam-runtime steam://rungameid/$GAME_ID | xargs lnch
 

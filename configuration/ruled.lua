@@ -29,12 +29,18 @@ ruled.client.connect_signal("request::rules", function()
   })
 
   ruled.client.append_rule({
+    rule_any = { class = "Scratchpad"},
+    properties = { floating = true },
+  })
+
+  ruled.client.append_rule({
     rule_any = { type = { "normal", "dialog" } },
     except_any = {
       class = {
         "Steam",
         "Scratchpad",
-        "dota2", --[[dota2]]
+        "dota2",
+        "launcher",
       },
     },
     properties = { titlebars_enabled = true },

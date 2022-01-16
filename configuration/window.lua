@@ -70,14 +70,10 @@ client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
 end)
 
--- Custom Layouts -------------------------------------------------------------
-local deck = bling.layout.deck
-
 -- Set the layouts
 awful.layout.layouts = {
   awful.layout.suit.tile,
   awful.layout.suit.floating,
-  deck,
 }
 
 -- EOF ------------------------------------------------------------------------

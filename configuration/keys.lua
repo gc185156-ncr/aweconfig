@@ -4,6 +4,8 @@ local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 -- Custom modules
 local bling = require("module.bling")
 local dashboard = require("ui.pop.dashboard")
@@ -140,7 +142,7 @@ awful.keyboard.append_global_keybindings({
   }),
 
   awful.key({ modkey, shift }, "Escape", function()
-    awful.spawn("alacritty -e bpytop")
+    awful.spawn("alacritty -e btop")
   end, {
     description = "System Utils",
     group = "system",
@@ -161,15 +163,42 @@ awful.keyboard.append_global_keybindings({
   -- Show Music Controller
   awful.key({ modkey }, "p", function()
     awesome.emit_signal("scratch::music")
+    -- awesome.emit_signal("scratch::vis")
   end, {}),
 
-  -- Show Launcher
   awful.key({ modkey }, "d", function()
     awesome.emit_signal("scratch::launcher")
-  end, {
-    description = "Show program launcher",
-    group = "Scratchpad",
-  }),
+   -- local app_launcher = bling.widget.app_launcher{
+   --   terminal = terminal,
+   --   favorites = { "firefox", "runtime", "discord", "slack", "qbittorrent", "synergy", "mumble", "alacritty", "gimp", "simplescreenrecorder" },
+   --   save_history = true,
+   --   app_show_icon = false,
+   --   search_commands = true,
+   --   sort_alphabetically = false,
+   --   apps_per_column = 1,
+   --   apps_per_row = 9,
+   --   background = beautiful.xbackground .. "DD",
+   --   prompt_height = dpi(50),
+   --   prompt_paddings = dpi(8),
+   --   prompt_margins = dpi(8),
+   --   prompt_icon = ">",
+   --   prompt_shape = gears.shape.rounded_rect,
+   --   prompt_border_width = dpi(1),
+   --   prompt_border_color = "#32302f",
+   --   prompt_text_color = beautiful.xforeground,
+   --   prompt_cursor_color = beautiful.xforeground,
+   --   prompt_icon_color = beautiful.xforeground .. "DD",
+   --   prompt_color = beautiful.xbackground .. "DD",
+   --   prompt_text = "",
+   --   app_normal_color = beautiful.xbackground .. "00",
+   --   app_height = dpi(40),
+   --   app_selected_color = beautiful.xcolor0 .. "DD",
+   --   app_name_selected_color = beautiful.xcolor14,
+   --   apps_margin = dpi(0),
+   --   apps_spacing = dpi(0),
+   -- }
+   -- app_launcher:show()
+  end, {}),
 
   -- Show Game Launcher
   awful.key({ modkey }, "g", function()
@@ -189,7 +218,7 @@ awful.keyboard.append_global_keybindings({
 
   -- Alt Tab
   awful.key({ "Mod1" }, "Tab", function()
-    awesome.emit_signal("bling::window_switcher::turn_on", mouse.screen)
+    awesome.emit_signal("bling::window_switcher::turn_on", awful.mouse.screen)
   end, {
     description = "Window Switcher",
     group = "client",

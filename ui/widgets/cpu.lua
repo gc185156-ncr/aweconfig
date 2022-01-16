@@ -14,7 +14,7 @@ local cpu_bar = wibox.widget({
 })
 
 local cpu_text = wibox.widget({
-  text = "CPU",
+  text = "",
   font = beautiful.font_name .. "14",
   color = beautiful.xforeground,
   align = "center",
@@ -23,13 +23,14 @@ local cpu_text = wibox.widget({
 
 awesome.connect_signal("signal::cpu", function(value)
   cpu_bar.value = value
+  cpu_text.text = "CPU - " .. value .. "%"
 end)
 
 return wibox.widget({
   {
-    cpu_bar,
     cpu_text,
-    layout = wibox.layout.stack,
+    cpu_bar,
+    layout = wibox.layout.align.vertical,
   },
   margins = dpi(10),
   widget = wibox.container.margin

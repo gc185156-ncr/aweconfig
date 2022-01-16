@@ -3,13 +3,9 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
--- Standard awesome library
+-- Standard awesome libraries
 local gfs = require("gears.filesystem")
-
--- Theme handling library
 local beautiful = require("beautiful")
-
--- Notification library
 local naughty = require("naughty")
 
 require("awful.autofocus")
@@ -39,6 +35,7 @@ require("signals")
 client = client 
 screen = screen
 awesome = awesome
+mouse = mouse
 
 -- Garbage Collector Settings
 collectgarbage("setpause", 110)

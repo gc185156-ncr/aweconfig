@@ -25,7 +25,7 @@ local music_control = bling.module.scratchpad({
   command = "alacritty --title music --class ncmpcpp,Scratchpad --command 'ncmpcpp'",
   rule = { instance = "ncmpcpp" },
   sticky = true,
-  autoclose = true,
+  autoclose = false,
   floating = true,
   geometry = { x = 500, y = 1015, height = 400, width = (screen_width * 0.625) },
   reapply = true,
@@ -33,9 +33,13 @@ local music_control = bling.module.scratchpad({
   rubato = { y = bottom_drawer },
 })
 
+
 awesome.connect_signal("scratch::music", function()
   music_control:toggle()
+  -- music_vis:toggle()
 end)
+
+
 
 local drop_term = bling.module.scratchpad({
   command = "alacritty --title term --class drop_term,Scratchpad",
@@ -59,7 +63,7 @@ local launcher = bling.module.scratchpad({
   sticky = true,
   autoclose = false,
   floating = true,
-  geometry = { x = 880, y = 420, height = 600, width = 800 },
+  geometry = { x = 970, y = 600, height = 300, width = 685 },
   reapply = true,
   dont_focus_before_close = true,
 })
@@ -69,8 +73,8 @@ awesome.connect_signal("scratch::launcher", function()
 end)
 
 local games = bling.module.scratchpad({
-  command = "alacritty --title games --class games,Scratchpad -e /home/gcc/.config/awesome/scripts/games-launcher.sh",
-  rule = { instance = "games" },
+  command = "alacritty --tittle games --class games,Scratchpad -e /home/gcc/.config/awesome/scripts/games-launcher.sh",
+  rule = { instance = "st-256color" },
   sticky = true,
   autoclose = false,
   floating = true,
