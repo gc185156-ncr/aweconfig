@@ -73,8 +73,8 @@ awesome.connect_signal("scratch::launcher", function()
 end)
 
 local games = bling.module.scratchpad({
-  command = "alacritty --tittle games --class games,Scratchpad -e /home/gcc/.config/awesome/scripts/games-launcher.sh",
-  rule = { instance = "st-256color" },
+  command = "alacritty --title games --class games,Scratchpad -e /home/gcc/.config/awesome/scripts/games-launcher.sh",
+  rule = { instance = "games" },
   sticky = true,
   autoclose = false,
   floating = true,

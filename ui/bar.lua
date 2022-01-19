@@ -11,7 +11,7 @@ local helpers = require("helpers")
 -- Time Widget ----------------------------------------------------------------
 
 local time_text = wibox.widget({
-  font = beautiful.font,
+  font = beautiful.font_name .. "10",
   format = "%b %d, %T",
   align = "center",
   valign = "center",
@@ -27,12 +27,11 @@ end)
 
 local time_widget = wibox.widget({
   {
-    { time_text, top = dpi(1), widget = wibox.container.margin },
+    { time_text, widget = wibox.container.margin },
     layout = wibox.layout.fixed.horizontal,
   },
   left = dpi(10),
   right = dpi(10),
-  bottom = dpi(2),
   widget = wibox.container.margin,
 })
 

@@ -49,9 +49,9 @@ theme.xcolor15 = xrdb.color15 or "#ebdbb2"
 
 -- Fonts
 --
-theme.font_name = "Terminus Regular "
-theme.font = theme.font_name .. "10"
-theme.icon_font_name = "Terminus "
+theme.font_name = "Hack Nerd Font Regular "
+theme.font = theme.font_name .. "9"
+theme.icon_font_name = "Hack Nerd Font "
 theme.icon_font = theme.icon_font_name .. "10"
 theme.font_taglist = theme.icon_font_name .. "9"
 
